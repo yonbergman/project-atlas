@@ -8,10 +8,17 @@
 
 import UIKit
 
-class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
+class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate {
 
     var netrunnerDB = YBNetrunnerDB()
     var photoBrowser:IDMPhotoBrowser?
+    
+    var searchResults:YBNetrunnerCard[] = []{
+        didSet{
+            self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
+        }
+    }
+    var searchPhotoBrowser:IDMPhotoBrowser?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +26,10 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func viewDidLoad() {
@@ -34,18 +45,41 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return netrunnerDB.count()
+        if inSearchResults(tableView) {
+            return searchResults.count
+        } else {
+            return netrunnerDB.count()
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as YBCardTableViewCell
-        let card = netrunnerDB[indexPath.row]
-        cell.card = card
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as YBCardTableViewCell
+        cell.card = cardAt(tableView, indexPath: indexPath)
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.displayCardInPhotoBrowser(indexPath)
+        var browser:IDMPhotoBrowser? = photoBrowser
+        if inSearchResults(tableView) {
+            browser = searchPhotoBrowser
+        }
+        self.displayCardInPhotoBrowser(indexPath, forBrowser: browser)
+    }
+    
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return 50.0
+    }
+    
+    func cardAt(tableView: UITableView,  indexPath: NSIndexPath) -> YBNetrunnerCard{
+        if inSearchResults(tableView) {
+            return searchResults[indexPath.row]
+        } else {
+            return netrunnerDB[indexPath.row]
+        }
+    }
+    
+    func inSearchResults(tableView: UITableView) -> Bool{
+        return tableView == searchDisplayController.searchResultsTableView
     }
     
     // #pragma mark - Netrunner DB Delegate
@@ -57,15 +91,15 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
     
     // #pragma mark - Photo Browser
     
-    func displayCardInPhotoBrowser(indexPath: NSIndexPath){
-        if let browser = photoBrowser{
+    func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
+        if let browser = forBrowser{
             browser.setInitialPageIndex(indexPath.row)
             self.presentViewController(browser, animated: true, completion: nil)
         }
     }
     
-    func setupPhotoBrowser(){
-        var photos:IDMPhoto[] = netrunnerDB.cards.map { card in
+    func createPhotoBrowserFromCards(cards:YBNetrunnerCard[]) -> IDMPhotoBrowser{
+        var photos:IDMPhoto[] = cards.map { card in
             let photo = IDMPhoto(URL: card.imageURL)
             photo.caption = card.title
             return photo
@@ -73,9 +107,23 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
         let browser = IDMPhotoBrowser(photos: photos)
         browser.displayArrowButton = false
         browser.displayActionButton = false
-        self.photoBrowser = browser
+        return browser
     }
-
+    
+    func setupPhotoBrowser(){
+        self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.cards)
+    }
+    
+    // #pragma mark - Searching
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
+        let searchQuery = searchString.bridgeToObjectiveC().lowercaseString
+        let results = netrunnerDB.cards.filter { card in
+            return card.fitsSearchQuery(searchQuery)
+        }
+        self.searchResults = results
+        return true
+    }
 
 }
 

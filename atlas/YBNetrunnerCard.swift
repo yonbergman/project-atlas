@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class YBNetrunnerCard {
     var data:NSDictionary
@@ -14,6 +15,7 @@ class YBNetrunnerCard {
         data = dictionary
     }
     
+    // #pragma mark description
     var title:String { return data["title"] as String }
     var type:String { return data["type"] as String }
     var subtype:String? { return data["subtype"] as? String }
@@ -24,6 +26,8 @@ class YBNetrunnerCard {
             return self.type
         }
     }
+    
+    // #pragma mark images
     var imageSrc:String { return data["imagesrc"] as String }
     var largeImageSrc:String { return data["largeimagesrc"] as String }
     var imageURL:NSURL {
@@ -31,12 +35,14 @@ class YBNetrunnerCard {
         let imageUrl = "http://netrunnerdb.com\(imageSrc)"
         return NSURL(string: imageUrl)
     }
-    
+
+    // #pragma mark relevent
     var setCode:String { return data["set_code"] as String }
     var isReal:Bool { return setCode != "alt" && setCode != "special"}
+
+    // #pragma mark faction
     var factionCode:String { return data["faction_code"] as String }
     var sideCode:String { return data["side_code"] as String }
-    
     var faction:String {
         if factionCode == "neutral" {
             return sideCode
@@ -45,25 +51,10 @@ class YBNetrunnerCard {
         }
     }
     
-    var cachedimage:UIImage?
     
-    func image(callback: (UIImage) -> ()){
-        if let img = cachedimage{
-            callback(img)
-            return
-        }
-        let imagePath = largeImageSrc.isEmpty ? imageSrc : largeImageSrc
-        let imageUrl = "http://netrunnerdb.com\(imageSrc)"
-        let url = NSURL(string: imageUrl)
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            let imageData = NSData(contentsOfURL: url)
-            let image = UIImage(data: imageData)
-            dispatch_async(dispatch_get_main_queue()) {
-                callback(image)
-            }
-        }
-        
+    func fitsSearchQuery(searchQuery:String) -> Bool{
+        let title = self.title.bridgeToObjectiveC().lowercaseString.bridgeToObjectiveC()
+        return title.containsString(searchQuery)
     }
     
 }

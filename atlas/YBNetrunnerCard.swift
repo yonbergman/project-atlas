@@ -15,10 +15,29 @@ class YBNetrunnerCard {
     }
     
     var title:String { return data["title"] as String }
+    var type:String { return data["type"] as String }
+    var subtype:String? { return data["subtype"] as? String }
+    var subtitle:String {
+        if self.subtype{
+            return "\(type): \(subtype)"
+        } else {
+            return self.type
+        }
+    }
     var imageSrc:String { return data["imagesrc"] as String }
     var largeImageSrc:String { return data["largeimagesrc"] as String }
     var setCode:String { return data["set_code"] as String }
     var isReal:Bool { return setCode != "alt" && setCode != "special"}
+    var factionCode:String { return data["faction_code"] as String }
+    var sideCode:String { return data["side_code"] as String }
+    
+    var faction:String {
+        if factionCode == "neutral" {
+            return sideCode
+        } else {
+            return factionCode
+        }
+    }
     
     var cachedimage:UIImage?
     

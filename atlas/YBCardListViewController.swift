@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController, YBNetrunnerDelegate {
+class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
 
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: YBCardViewController? = nil
     var netrunnerDB = YBNetrunnerDB()
 
 
@@ -34,7 +34,7 @@ class MasterViewController: UITableViewController, YBNetrunnerDelegate {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let card = netrunnerDB[indexPath.row]
-            (segue.destinationViewController as DetailViewController).card = card
+            (segue.destinationViewController as YBCardViewController).card = card
         }
     }
 

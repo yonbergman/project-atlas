@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class YBCardViewController: UIViewController {
 
     @IBOutlet var imageView : UIImageView
 

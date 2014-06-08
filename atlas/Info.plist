@@ -40,5 +40,7 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array/>
 </dict>
 </plist>

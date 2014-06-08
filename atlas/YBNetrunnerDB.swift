@@ -34,7 +34,9 @@ class YBNetrunnerCard {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let imageData = NSData(contentsOfURL: url)
             let image = UIImage(data: imageData)
-            callback(image)
+            dispatch_async(dispatch_get_main_queue()) {
+                callback(image)
+            }
         }
         
 
@@ -78,7 +80,9 @@ class YBNetrunnerDB: NSObject {
             if (error){
                 println("error fetching cards")
             } else {
-                self.receivedJSON(data)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.receivedJSON(data)
+                }
             }
         }
     }
@@ -96,8 +100,8 @@ class YBNetrunnerDB: NSObject {
                     cards.append(card)
                 }
             }
-
-            myDelegate?.fetchedCards()
+            
+            self.myDelegate?.fetchedCards()
         }
     }
     

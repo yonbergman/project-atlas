@@ -10,7 +10,6 @@
 		7258C4A4A9874BD598A6C8A0 /* libPods-atlas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B142BD92D24EB6BFF58049 /* libPods-atlas.a */; };
 		ED9D8A7F1941D57E00B19ED3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */; };
 		ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */; };
-		ED9D8A831941D57E00B19ED3 /* YBCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A821941D57E00B19ED3 /* YBCardViewController.swift */; };
 		ED9D8A861941D57E00B19ED3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D8A841941D57E00B19ED3 /* Main.storyboard */; };
 		ED9D8A881941D57E00B19ED3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9D8A871941D57E00B19ED3 /* Images.xcassets */; };
 		ED9D8A941941D57E00B19ED3 /* atlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A931941D57E00B19ED3 /* atlasTests.swift */; };
@@ -49,7 +48,6 @@
 		ED9D8A7D1941D57E00B19ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBCardListViewController.swift; sourceTree = "<group>"; };
-		ED9D8A821941D57E00B19ED3 /* YBCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBCardViewController.swift; sourceTree = "<group>"; };
 		ED9D8A851941D57E00B19ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED9D8A871941D57E00B19ED3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED9D8A8D1941D57E00B19ED3 /* atlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = atlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */,
-				ED9D8A821941D57E00B19ED3 /* YBCardViewController.swift */,
 				EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */,
 			);
 			name = Controllers;
@@ -303,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9D8A9E1941D65600B19ED3 /* YBNetrunnerDB.swift in Sources */,
-				ED9D8A831941D57E00B19ED3 /* YBCardViewController.swift in Sources */,
 				ED9F34861944EA8700CFCFEA /* YBNetrunnerCard.swift in Sources */,
 				ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */,
 				EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */,

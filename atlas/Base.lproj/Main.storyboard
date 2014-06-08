@@ -3,7 +3,6 @@
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -29,53 +28,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
-        </scene>
-        <!--Card View Controller - Detail-->
-        <scene sceneID="yUG-lL-AsK">
-            <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="YBCardViewController" customModule="atlas" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OVx-Tb-exK">
-                                <rect key="frame" x="80" y="11" width="320" height="457"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="OVx-Tb-exK" secondAttribute="height" multiplier="0.7:1" id="EPv-VL-GGw"/>
-                                    <constraint firstAttribute="width" constant="320" id="y8W-fm-mRn"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="OVx-Tb-exK" secondAttribute="centerY" id="Ytv-2p-ifx"/>
-                            <constraint firstAttribute="centerX" secondItem="OVx-Tb-exK" secondAttribute="centerX" id="hN4-xj-cL0"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="LOA-5v-8d8" appends="YES" id="RKk-eL-lIF"/>
-                        </connections>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
-                    <connections>
-                        <outlet property="imageView" destination="OVx-Tb-exK" id="zat-So-Lw8"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="LOA-5v-8d8">
-                    <connections>
-                        <action selector="tap:" destination="JEX-9P-axG" id="AKj-x4-sE6"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1177" y="-630"/>
         </scene>
         <!--Card List View Controller - Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -130,7 +82,6 @@
                                     <outlet property="cardTypeLabel" destination="LEE-EZ-kVr" id="55e-7j-Vhh"/>
                                     <outlet property="factionImageView" destination="K9r-Dc-VMb" id="Prk-O4-bZV"/>
                                     <outlet property="titleLabel" destination="XRW-xZ-mwl" id="E4f-es-Op9"/>
-                                    <segue destination="JEX-9P-axG" kind="showDetail" identifier="showDetail" id="BKN-vI-AYu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

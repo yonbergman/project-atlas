@@ -10,9 +10,8 @@ import UIKit
 
 class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
 
-    var detailViewController: YBCardViewController? = nil
     var netrunnerDB = YBNetrunnerDB()
-
+    var photoBrowser:IDMPhotoBrowser?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,16 +27,6 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
         netrunnerDB.fetchCards()
     }
 
-    // #pragma mark - Segues
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            let card = netrunnerDB[indexPath.row]
-            (segue.destinationViewController as YBCardViewController).card = card
-        }
-    }
-
     // #pragma mark - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -50,24 +39,41 @@ class YBCardListViewController: UITableViewController, YBNetrunnerDelegate {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as YBCardTableViewCell
-
         let card = netrunnerDB[indexPath.row]
         cell.card = card
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-//            let object = objects[indexPath.row] as NSDate
-//            self.detailViewController!.detailItem = object
-        }
-        
+        self.displayCardInPhotoBrowser(indexPath)
     }
     
     // #pragma mark - Netrunner DB Delegate
     
     func fetchedCards() {
         self.tableView.reloadData()
+        setupPhotoBrowser()
+    }
+    
+    // #pragma mark - Photo Browser
+    
+    func displayCardInPhotoBrowser(indexPath: NSIndexPath){
+        if let browser = photoBrowser{
+            browser.setInitialPageIndex(indexPath.row)
+            self.presentViewController(browser, animated: true, completion: nil)
+        }
+    }
+    
+    func setupPhotoBrowser(){
+        var photos:IDMPhoto[] = netrunnerDB.cards.map { card in
+            let photo = IDMPhoto(URL: card.imageURL)
+            photo.caption = card.title
+            return photo
+        }
+        let browser = IDMPhotoBrowser(photos: photos)
+        browser.displayArrowButton = false
+        browser.displayActionButton = false
+        self.photoBrowser = browser
     }
 
 

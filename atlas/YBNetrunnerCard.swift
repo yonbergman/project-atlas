@@ -26,6 +26,12 @@ class YBNetrunnerCard {
     }
     var imageSrc:String { return data["imagesrc"] as String }
     var largeImageSrc:String { return data["largeimagesrc"] as String }
+    var imageURL:NSURL {
+        let imagePath = largeImageSrc.isEmpty ? imageSrc : largeImageSrc
+        let imageUrl = "http://netrunnerdb.com\(imageSrc)"
+        return NSURL(string: imageUrl)
+    }
+    
     var setCode:String { return data["set_code"] as String }
     var isReal:Bool { return setCode != "alt" && setCode != "special"}
     var factionCode:String { return data["faction_code"] as String }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 class YBNetrunnerCard {
     var data:NSDictionary
@@ -51,10 +50,8 @@ class YBNetrunnerCard {
         }
     }
     
-    
-    func fitsSearchQuery(searchQuery:String) -> Bool{
-        let title = self.title.bridgeToObjectiveC().lowercaseString.bridgeToObjectiveC()
-        return title.containsString(searchQuery)
+    func matches(string:String?) -> Bool {
+        return self.title.lowercaseStringWithLocale(NSLocale.currentLocale()).bridgeToObjectiveC().containsString(string)
     }
     
 }

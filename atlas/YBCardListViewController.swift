@@ -117,11 +117,11 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     // #pragma mark - Searching
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
-        let searchQuery = searchString.bridgeToObjectiveC().lowercaseString
-        let results = netrunnerDB.cards.filter { card in
-            return card.fitsSearchQuery(searchQuery)
+        let trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let downcasedString = trimmedString.lowercaseStringWithLocale(NSLocale.currentLocale())
+        self.searchResults = netrunnerDB.cards.filter { card in
+            card.matches(downcasedString)
         }
-        self.searchResults = results
         return true
     }
 

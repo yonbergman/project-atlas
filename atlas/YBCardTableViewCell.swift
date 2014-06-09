@@ -38,7 +38,7 @@ class YBCardTableViewCell: UITableViewCell {
             titleLabel.text = card.title
             cardTypeLabel.text = card.subtitle
             let factionImage = UIImage(named: "\(card.faction).png")
-            factionImageView.image = factionImage
+            self.factionImageView.image = factionImage
         }
     }
     

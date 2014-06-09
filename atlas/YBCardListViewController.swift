@@ -118,9 +118,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
         let trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let downcasedString = trimmedString.lowercaseStringWithLocale(NSLocale.currentLocale())
         self.searchResults = netrunnerDB.cards.filter { card in
-            card.matches(downcasedString)
+            card.matches(trimmedString)
         }
         return true
     }

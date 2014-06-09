@@ -50,8 +50,12 @@ class YBNetrunnerCard {
         }
     }
     
-    func matches(string:String?) -> Bool {
-        return self.title.lowercaseStringWithLocale(NSLocale.currentLocale()).bridgeToObjectiveC().containsString(string)
+    func matches(queryString:String?) -> Bool {
+        if let query = queryString{
+            return self.title.containsIgnoreCase(query)
+        } else {
+            return false
+        }
     }
     
 }

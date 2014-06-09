@@ -53,8 +53,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runner.png" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <color key="backgroundColor" red="0.41542134679999998" green="1" blue="0.1814658697" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="GWt-3X-19x"/>
                                                 <constraint firstAttribute="width" constant="50" id="HaT-CX-Kzr"/>
@@ -66,9 +67,9 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asset: Advertisement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEE-EZ-kVr">
-                                            <rect key="frame" x="60" y="25" width="400" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Asset: Advertisement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEE-EZ-kVr">
+                                            <rect key="frame" x="60" y="27" width="400" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -76,8 +77,8 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="XRW-xZ-mwl" secondAttribute="trailing" constant="20" id="7M9-s7-xBm"/>
                                         <constraint firstItem="XRW-xZ-mwl" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="top" constant="6" id="D3l-RO-Zu0"/>
-                                        <constraint firstAttribute="centerY" secondItem="K9r-Dc-VMb" secondAttribute="centerY" constant="-0.5" id="IMG-To-ckZ"/>
-                                        <constraint firstItem="LEE-EZ-kVr" firstAttribute="top" secondItem="XRW-xZ-mwl" secondAttribute="bottom" constant="-4" id="L93-Fz-Qju"/>
+                                        <constraint firstAttribute="centerY" secondItem="K9r-Dc-VMb" secondAttribute="centerY" id="IMG-To-ckZ"/>
+                                        <constraint firstItem="LEE-EZ-kVr" firstAttribute="top" secondItem="XRW-xZ-mwl" secondAttribute="bottom" constant="-2" id="L93-Fz-Qju"/>
                                         <constraint firstItem="XRW-xZ-mwl" firstAttribute="leading" secondItem="K9r-Dc-VMb" secondAttribute="trailing" constant="10" id="N2K-4A-4Va"/>
                                         <constraint firstItem="K9r-Dc-VMb" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leading" id="VAY-J1-T4X"/>
                                         <constraint firstItem="XRW-xZ-mwl" firstAttribute="leading" secondItem="LEE-EZ-kVr" secondAttribute="leading" id="iGB-U8-QKL"/>
@@ -118,5 +119,8 @@
             <point key="canvasLocation" x="604" y="-638"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="runner.png" width="50" height="50"/>
+    </resources>
     <color key="tintColor" red="0.080350032860000004" green="0.16465325659999999" blue="0.26925526490000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

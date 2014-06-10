@@ -38,6 +38,12 @@ class YBNetrunnerCard {
     // #pragma mark relevent
     var setCode:String { return data["set_code"] as String }
     var isReal:Bool { return setCode != "alt" && setCode != "special"}
+    
+    // #pragma mark influence
+    var influence:Int {
+        let factionCost = data["factioncost"] as? Int
+        return factionCost ? factionCost! : 0
+    }
 
     // #pragma mark faction
     var factionCode:String { return data["faction_code"] as String }

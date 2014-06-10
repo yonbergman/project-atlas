@@ -37,7 +37,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         netrunnerDB.myDelegate = self
         netrunnerDB.fetchCards()
     }
-
+    
     // #pragma mark - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -81,7 +81,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     func inSearchResults(tableView: UITableView) -> Bool{
         return tableView == searchDisplayController.searchResultsTableView
     }
-    
+
     // #pragma mark - Netrunner DB Delegate
     
     func fetchedCards() {
@@ -115,6 +115,23 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     // #pragma mark - Searching
+    
+    @IBAction func startSearch(sender : UIBarButtonItem) {
+        showSearchBar()
+        self.searchDisplayController.searchBar.becomeFirstResponder()
+    }
+    
+    func hideSearchBar() {
+        self.searchDisplayController.searchBar.hidden = true
+        self.tableView.contentOffset = CGPointMake(0.0, self.searchDisplayController.searchBar.frame.height);
+    }
+    
+    func showSearchBar(){
+        self.searchDisplayController.searchBar.hidden = false
+        self.tableView.contentOffset = CGPointMake(0.0, 0.0);
+        
+    }
+
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
         let trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())

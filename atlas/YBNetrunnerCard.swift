@@ -44,6 +44,8 @@ class YBNetrunnerCard {
         let factionCost = data["factioncost"] as? Int
         return factionCost ? factionCost! : 0
     }
+    
+    var unique:Bool { return data["uniqueness"] as Bool }
 
     // #pragma mark faction
     var factionCode:String { return data["faction_code"] as String }

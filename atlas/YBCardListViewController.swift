@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate {
+class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate, IDMPhotoBrowserDelegate {
 
     var netrunnerDB = YBNetrunnerDB()
     var photoBrowser:IDMPhotoBrowser?
@@ -26,6 +26,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
+        self.clearsSelectionOnViewWillAppear = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,6 +82,14 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     func inSearchResults(tableView: UITableView) -> Bool{
         return tableView == searchDisplayController.searchResultsTableView
     }
+    
+    func currentTableView() -> UITableView {
+        if searchDisplayController.active {
+            return searchDisplayController.searchResultsTableView
+        } else {
+            return self.tableView
+        }
+    }
 
     // #pragma mark - Netrunner DB Delegate
     
@@ -105,6 +114,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             return photo
         }
         let browser = IDMPhotoBrowser(photos: photos)
+        browser.delegate = self
         browser.displayArrowButton = false
         browser.displayActionButton = false
         return browser
@@ -112,6 +122,27 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func setupPhotoBrowser(){
         self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.cards)
+    }
+    
+    func photoBrowser(photoBrowser:IDMPhotoBrowser, didDismissAtPageIndex index:Int){
+        highlightCellAtRow(index)
+    }
+    
+    func highlightCellAtRow(index:Int){
+        let tableView = self.currentTableView()
+        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
+        
+        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        let shouldScroll = !tableView.indexPathsForVisibleRows().bridgeToObjectiveC().containsObject(indexPath)
+        if shouldScroll {
+            tableView.scrollToNearestSelectedRowAtScrollPosition(.Middle, animated: true)
+        }
+        
+        let delay = Double(NSEC_PER_SEC) * 0.2
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay)), dispatch_get_main_queue()){
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     // #pragma mark - Searching
@@ -129,10 +160,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     func showSearchBar(){
         self.searchDisplayController.searchBar.hidden = false
         self.tableView.contentOffset = CGPointMake(0.0, 0.0);
-        
     }
 
-    
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
         let trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         self.searchResults = netrunnerDB.cards.filter { card in

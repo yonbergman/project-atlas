@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol YBNetrunnerDelegate {
-
     func fetchedCards()
+    @optional func progressed(progress:Float)
     @optional func errorFetchingCards(error: NSError)
 }
 
@@ -20,37 +20,43 @@ class YBNetrunnerDB: NSObject {
     var cards:Array<YBNetrunnerCard> = []
     var myDelegate:YBNetrunnerDelegate?
     
-    func fetchCards() {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        NSURLConnection.sendAsynchronousRequest(NSURLRequest(URL: baseURL), queue: NSOperationQueue()) {
-            (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            if (error){
-                println("error fetching cards")
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.receivedJSON(data)
-                }
-            }
+    func loadCards(){
+        
+        let request = NSURLRequest(URL: baseURL)
+        var progress:NSProgress?
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFJSONResponseSerializer()
+        let operation = manager.HTTPRequestOperationWithRequest(request,
+            success: {
+                (operation:AFHTTPRequestOperation!, obj:AnyObject!) in
+                self.receivedJSON(obj as? NSArray)
+            }, failure: {
+                (operation:AFHTTPRequestOperation!, error:NSError!) in
+                self.errorReceived(error)
+            })
+        
+        operation.setDownloadProgressBlock(){
+            let progress:Float = Float($1)/Float($2)
+            self.myDelegate?.progressed?(progress)
         }
+        operation.start()
     }
-    func receivedJSON(data:NSData){
-        var error:NSError?
-        let jsonCards = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? NSArray
-
-        if (error){
-            myDelegate?.errorFetchingCards?(error!)
-        } else {
-            cards.removeAll(keepCapacity: true)
-            for dict:AnyObject in jsonCards!{
-                let card = YBNetrunnerCard(dictionary: dict as NSDictionary)
-                if card.isReal{
-                    cards.append(card)
-                }
+    
+    func receivedJSON(jsonCards:NSArray?){
+        cards.removeAll(keepCapacity: true)
+        for dict:AnyObject in jsonCards!{
+            let card = YBNetrunnerCard(dictionary: dict as NSDictionary)
+            if card.isReal{
+                cards.append(card)
             }
-            
-            self.myDelegate?.fetchedCards()
         }
+        
+        self.myDelegate?.fetchedCards()
+    }
+    
+    func errorReceived(error:NSError){
+        self.myDelegate?.errorFetchingCards?(error)
     }
     
     func count() -> Int {

@@ -10,7 +10,12 @@ import UIKit
 
 class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate, IDMPhotoBrowserDelegate {
 
-    var netrunnerDB = YBNetrunnerDB()
+    var netrunnerDB:YBNetrunnerDB = YBNetrunnerDB(){
+        didSet{
+            netrunnerDB.myDelegate = self
+            setupPhotoBrowser()
+        }
+    }
     var photoBrowser:IDMPhotoBrowser?
     
     var searchResults:YBNetrunnerCard[] = []{
@@ -35,8 +40,6 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        netrunnerDB.myDelegate = self
-        netrunnerDB.fetchCards()
     }
     
     // #pragma mark - Table View

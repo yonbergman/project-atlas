@@ -10,6 +10,7 @@
 		7258C4A4A9874BD598A6C8A0 /* libPods-atlas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B142BD92D24EB6BFF58049 /* libPods-atlas.a */; };
 		ED036B4119459DCE00FA4D56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4019459DCE00FA4D56 /* Foundation.framework */; };
 		ED036B4319459DD200FA4D56 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4219459DD200FA4D56 /* CFNetwork.framework */; };
+		ED0FCA3C1948921100CAEA18 /* YBLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */; };
 		ED56F8F619459C360009E67B /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED56F8F519459C360009E67B /* String+Contains.swift */; };
 		ED9D8A7F1941D57E00B19ED3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */; };
 		ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */; };
@@ -68,6 +69,7 @@
 		ED036B3E19459DC900FA4D56 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		ED036B4019459DCE00FA4D56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED036B4219459DD200FA4D56 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBLoadingViewController.swift; sourceTree = "<group>"; };
 		ED56F8F519459C360009E67B /* String+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Contains.swift"; sourceTree = "<group>"; };
 		ED9D8A791941D57E00B19ED3 /* atlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = atlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D8A7D1941D57E00B19ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */,
 				EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */,
+				ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9D8A9E1941D65600B19ED3 /* YBNetrunnerDB.swift in Sources */,
+				ED0FCA3C1948921100CAEA18 /* YBLoadingViewController.swift in Sources */,
 				ED9F34861944EA8700CFCFEA /* YBNetrunnerCard.swift in Sources */,
 				ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */,
 				ED56F8F619459C360009E67B /* String+Contains.swift in Sources */,

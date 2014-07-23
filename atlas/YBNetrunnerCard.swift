@@ -19,8 +19,8 @@ class YBNetrunnerCard {
     var type:String { return data["type"] as String }
     var subtype:String? { return data["subtype"] as? String }
     var subtitle:String {
-        if self.subtype{
-            return "\(type): \(subtype)"
+        if let st = self.subtype{
+            return "\(type): \(st)"
         } else {
             return self.type
         }

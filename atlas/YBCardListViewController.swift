@@ -18,7 +18,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     var photoBrowser:IDMPhotoBrowser?
     
-    var searchResults:YBNetrunnerCard[] = []{
+    var searchResults:[YBNetrunnerCard] = []{
         didSet{
             self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
         }
@@ -105,13 +105,13 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
         if let browser = forBrowser{
-            browser.setInitialPageIndex(indexPath.row)
+            browser.setInitialPageIndex(indexPath.row.asUnsigned())
             self.presentViewController(browser, animated: true, completion: nil)
         }
     }
     
-    func createPhotoBrowserFromCards(cards:YBNetrunnerCard[]) -> IDMPhotoBrowser{
-        var photos:IDMPhoto[] = cards.map { card in
+    func createPhotoBrowserFromCards(cards:[YBNetrunnerCard]) -> IDMPhotoBrowser{
+        var photos:[IDMPhoto] = cards.map { card in
             let photo = IDMPhoto(URL: card.imageURL)
             photo.caption = card.title
             return photo

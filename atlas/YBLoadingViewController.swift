@@ -10,9 +10,9 @@ import UIKit
 
 class YBLoadingViewController: UIViewController, YBNetrunnerDelegate {
 
-    @IBOutlet var circularLoader : DACircularProgressView
+    @IBOutlet weak var circularLoader : DACircularProgressView!
     
-    @lazy var cardDb = YBNetrunnerDB()
+    lazy var cardDb = YBNetrunnerDB()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,10 @@ import UIKit
 
 class YBCardTableViewCell: UITableViewCell {
 
-    @IBOutlet var factionImageView : UIImageView
-    @IBOutlet var titleLabel : UILabel
-    @IBOutlet var cardTypeLabel : UILabel
-    @IBOutlet var influenceLabel : UILabel
+    @IBOutlet weak var factionImageView : UIImageView!
+    @IBOutlet weak var titleLabel : UILabel!
+    @IBOutlet weak var cardTypeLabel : UILabel!
+    @IBOutlet weak var influenceLabel : UILabel!
     
     var influenceAttributes:NSDictionary?
     
@@ -22,7 +22,6 @@ class YBCardTableViewCell: UITableViewCell {
             self.configureView()
         }
 
-    
     }
     init(style: UITableViewCellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

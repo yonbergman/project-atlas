@@ -10,8 +10,8 @@ import UIKit
 
 @objc protocol YBNetrunnerDelegate {
     func fetchedCards()
-    @optional func progressed(progress:Float)
-    @optional func errorFetchingCards(error: NSError)
+    optional func progressed(progress:Float)
+    optional func errorFetchingCards(error: NSError)
 }
 
 class YBNetrunnerDB: NSObject {

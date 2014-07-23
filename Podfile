@@ -5,6 +5,7 @@ target "atlas" do
   pod 'IDMPhotoBrowser', '~> 1.3'
   pod 'NSString+Ruby', '~> 1.1'
   pod 'BlocksKit', '~> 2.2'
+  #pod 'Dollar', '~> 0.2'
 end
 
 target "atlasTests" do

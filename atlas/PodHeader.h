@@ -11,3 +11,4 @@
 #import <NSString+Ruby.h>
 #import <DACircularProgressView.h>
 #import <BlocksKit.h>
+#import <PocketSVG.h>

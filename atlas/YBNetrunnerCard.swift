@@ -28,9 +28,9 @@ class YBNetrunnerCard {
     
     // #pragma mark images
     var imageSrc:String { return data["imagesrc"] as String }
-    var largeImageSrc:String { return data["largeimagesrc"] as String }
+//    var largeImageSrc:String { return data["largeimagesrc"] as String }
     var imageURL:NSURL {
-        let imagePath = largeImageSrc.isEmpty ? imageSrc : largeImageSrc
+//        let imagePath = largeImageSrc.isEmpty ? imageSrc : largeImageSrc
         let imageUrl = "http://netrunnerdb.com\(imageSrc)"
         return NSURL(string: imageUrl)
     }
@@ -42,7 +42,7 @@ class YBNetrunnerCard {
     // #pragma mark influence
     var influence:Int {
         let factionCost = data["factioncost"] as? Int
-        return factionCost ? factionCost! : 0
+        return (factionCost != nil) ? factionCost! : 0
     }
     
     var unique:Bool { return data["uniqueness"] as Bool }

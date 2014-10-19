@@ -23,9 +23,9 @@ class YBCardTableViewCell: UITableViewCell {
         }
 
     }
-    init(style: UITableViewCellStyle, reuseIdentifier: String) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
+//    init(style: UITableViewCellStyle, reuseIdentifier: String) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +47,7 @@ class YBCardTableViewCell: UITableViewCell {
     
     var influence:Int = 0{
         didSet{
-            if (!influenceAttributes){
+            if influenceAttributes == nil{
                 influenceAttributes = self.influenceLabel.attributedText.attributesAtIndex(0, effectiveRange: nil)
             }
             let infStr = "•".x(self.influence)

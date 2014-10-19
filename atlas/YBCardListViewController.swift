@@ -70,7 +70,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         self.displayCardInPhotoBrowser(indexPath, forBrowser: browser)
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50.0
     }
     
@@ -83,15 +83,16 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     func inSearchResults(tableView: UITableView) -> Bool{
-        return tableView == searchDisplayController.searchResultsTableView
+        return tableView == searchDisplayController?.searchResultsTableView
     }
     
     func currentTableView() -> UITableView {
-        if searchDisplayController.active {
-            return searchDisplayController.searchResultsTableView
-        } else {
-            return self.tableView
+        if searchDisplayController?.active == true{
+            if let sdc = searchDisplayController {
+                return sdc.searchResultsTableView
+            }
         }
+        return self.tableView
     }
 
     // #pragma mark - Netrunner DB Delegate
@@ -105,7 +106,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
         if let browser = forBrowser{
-            browser.setInitialPageIndex(indexPath.row.asUnsigned())
+            browser.setInitialPageIndex(UInt(indexPath.row))
             self.presentViewController(browser, animated: true, completion: nil)
         }
     }
@@ -137,7 +138,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         
         
         tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        let shouldScroll = !tableView.indexPathsForVisibleRows().bridgeToObjectiveC().containsObject(indexPath)
+        
+        let shouldScroll = contains(tableView.indexPathsForVisibleRows() as [NSIndexPath], indexPath);
         if shouldScroll {
             tableView.scrollToNearestSelectedRowAtScrollPosition(.Middle, animated: true)
         }
@@ -152,16 +154,18 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     @IBAction func startSearch(sender : UIBarButtonItem) {
         showSearchBar()
-        self.searchDisplayController.searchBar.becomeFirstResponder()
+        self.searchDisplayController?.searchBar.becomeFirstResponder()
     }
     
     func hideSearchBar() {
-        self.searchDisplayController.searchBar.hidden = true
-        self.tableView.contentOffset = CGPointMake(0.0, self.searchDisplayController.searchBar.frame.height);
+        if let sdc = self.searchDisplayController {
+            sdc.searchBar.hidden = true
+            self.tableView.contentOffset = CGPointMake(0.0, sdc.searchBar.frame.height);
+        }
     }
     
     func showSearchBar(){
-        self.searchDisplayController.searchBar.hidden = false
+        self.searchDisplayController?.searchBar.hidden = false
         self.tableView.contentOffset = CGPointMake(0.0, 0.0);
     }
 

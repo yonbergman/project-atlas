@@ -32,7 +32,7 @@ class YBLoadingViewController: UIViewController, YBNetrunnerDelegate {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "loaded" {
             ((segue.destinationViewController as UINavigationController).topViewController as YBCardListViewController).netrunnerDB = cardDb
         }

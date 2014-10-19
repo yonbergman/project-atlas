@@ -11,9 +11,6 @@ import Foundation
 extension String {
  
     func containsIgnoreCase(other: String) -> Bool{
-        let otherLowerCased = other.bridgeToObjectiveC().lowercaseString
-        let myselfLowerCased = self.bridgeToObjectiveC().lowercaseString
-
-        return myselfLowerCased.bridgeToObjectiveC().includes(otherLowerCased)
+        return self.lowercaseString.includes(other.lowercaseString)
     }
 }

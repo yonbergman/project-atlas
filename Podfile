@@ -6,6 +6,7 @@ target "atlas" do
   pod 'NSString+Ruby', '~> 1.1'
   pod 'BlocksKit', '~> 2.2'
   #pod 'Dollar', '~> 0.2'
+  pod 'PocketSVG', '~> 0.6'
 end
 
 target "atlasTests" do

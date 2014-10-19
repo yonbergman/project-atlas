@@ -12,3 +12,4 @@
 #import <DACircularProgressView.h>
 #import <BlocksKit.h>
 #import <PocketSVG.h>
+#import <Parse/Parse.h>

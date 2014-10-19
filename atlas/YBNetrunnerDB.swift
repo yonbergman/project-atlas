@@ -16,13 +16,18 @@ import UIKit
 
 class YBNetrunnerDB: NSObject {
     
-    var baseURL:NSURL = NSURL(string: "http://netrunnerdb.com/api/cards/")
+    var baseURL:NSURL?
     var cards:Array<YBNetrunnerCard> = []
     var myDelegate:YBNetrunnerDelegate?
     
     func loadCards(){
+        if baseURL == nil {
+            loadSettings()
+            return
+        }
+        let url = baseURL!
         
-        let request = NSURLRequest(URL: baseURL)
+        let request = NSURLRequest(URL: url)
         var progress:NSProgress?
         
         let manager = AFHTTPRequestOperationManager()
@@ -41,6 +46,15 @@ class YBNetrunnerDB: NSObject {
             self.myDelegate?.progressed?(progress)
         }
         operation.start()
+    }
+
+    func loadSettings(){
+        YBParseSettings.getValueForKey("card_url") {
+            (value:String) in
+            self.baseURL = NSURL(string: value)
+            self.loadCards()
+        }
+
     }
     
     func receivedJSON(jsonCards:NSArray?){

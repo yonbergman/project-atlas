@@ -7,7 +7,9 @@ target "atlas" do
   pod 'BlocksKit', '~> 2.2'
   #pod 'Dollar', '~> 0.2'
   pod 'PocketSVG', '~> 0.6'
+  pod 'Parse', '~> 1.4'
 end
+
 
 target "atlasTests" do
 

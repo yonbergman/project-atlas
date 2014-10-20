@@ -41,6 +41,7 @@
 		EDE1753119F45D2500063894 /* Credit.svg in Resources */ = {isa = PBXBuildFile; fileRef = EDE1753019F45D2500063894 /* Credit.svg */; };
 		EDE1753319F45D5C00063894 /* YBSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753219F45D5C00063894 /* YBSplashViewController.swift */; };
 		EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753619F4E1AD00063894 /* YBAppConfig.swift */; };
+		EDE1753919F4F28900063894 /* YBReavealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753819F4F28900063894 /* YBReavealViewController.swift */; };
 		EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		EDE1753019F45D2500063894 /* Credit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Credit.svg; sourceTree = "<group>"; };
 		EDE1753219F45D5C00063894 /* YBSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSplashViewController.swift; sourceTree = "<group>"; };
 		EDE1753619F4E1AD00063894 /* YBAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAppConfig.swift; sourceTree = "<group>"; };
+		EDE1753819F4F28900063894 /* YBReavealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBReavealViewController.swift; sourceTree = "<group>"; };
 		EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBCardTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +214,7 @@
 				EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */,
 				ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */,
 				EDE1753219F45D5C00063894 /* YBSplashViewController.swift */,
+				EDE1753819F4F28900063894 /* YBReavealViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE1753919F4F28900063894 /* YBReavealViewController.swift in Sources */,
 				ED9D8A9E1941D65600B19ED3 /* YBNetrunnerDB.swift in Sources */,
 				ED0FCA3C1948921100CAEA18 /* YBLoadingViewController.swift in Sources */,
 				ED9F34861944EA8700CFCFEA /* YBNetrunnerCard.swift in Sources */,

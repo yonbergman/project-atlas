@@ -150,6 +150,10 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         }
     }
     
+    @IBAction func showMenu(sender: AnyObject) {
+self.revealController.showViewController(self.revealController.leftViewController)
+        
+    }
     // #pragma mark - Searching
     
     @IBAction func startSearch(sender : UIBarButtonItem) {

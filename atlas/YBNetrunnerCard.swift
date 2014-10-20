@@ -57,13 +57,22 @@ class YBNetrunnerCard {
             return factionCode
         }
     }
-    
-    func matches(queryString:String?) -> Bool {
+        
+    func matchTitle(queryString:String?) -> Bool {
         if let query = queryString{
             return self.title.containsIgnoreCase(query)
         } else {
             return false
         }
     }
+
+    func matchType(queryString:String?) -> Bool {
+        if let query = queryString{
+            return self.subtitle.containsIgnoreCase(query)
+        } else {
+            return false
+        }
+    }
+
     
 }

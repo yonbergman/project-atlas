@@ -23,9 +23,6 @@ class YBCardTableViewCell: UITableViewCell {
         }
 
     }
-//    init(style: UITableViewCellStyle, reuseIdentifier: String) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

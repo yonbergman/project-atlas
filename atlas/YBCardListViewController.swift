@@ -170,9 +170,19 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
 
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
-        let trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        let typeSearch = startsWith(trimmedString, "s:")
+        if typeSearch {
+            trimmedString.removeRange(Range(start:trimmedString.startIndex, end: advance(trimmedString.startIndex, 2)))
+            
+        }
         self.searchResults = netrunnerDB.cards.filter { card in
-            card.matches(trimmedString)
+            if typeSearch{
+                return card.matchType(trimmedString)
+            } else {
+                return card.matchTitle(trimmedString)
+            }
         }
         return true
     }

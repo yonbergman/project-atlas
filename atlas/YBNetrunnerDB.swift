@@ -49,12 +49,12 @@ class YBNetrunnerDB: NSObject {
     }
 
     func loadSettings(){
-        YBParseSettings.getValueForKey("card_url") {
-            (value:String) in
-            self.baseURL = NSURL(string: value)
+        YBAppConfig.getConfig({
+            (var config: PFConfig!, error: NSError!) in
+            let stringURL = config["card_url"] as String
+            self.baseURL = NSURL(string: stringURL)
             self.loadCards()
-        }
-
+        })
     }
     
     func receivedJSON(jsonCards:NSArray?){

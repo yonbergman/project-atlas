@@ -40,7 +40,7 @@
 		EDE1752F19F45C1300063894 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE1752E19F45C1300063894 /* Splash.storyboard */; };
 		EDE1753119F45D2500063894 /* Credit.svg in Resources */ = {isa = PBXBuildFile; fileRef = EDE1753019F45D2500063894 /* Credit.svg */; };
 		EDE1753319F45D5C00063894 /* YBSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753219F45D5C00063894 /* YBSplashViewController.swift */; };
-		EDE1753519F46CCF00063894 /* YBParseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753419F46CCF00063894 /* YBParseSettings.swift */; };
+		EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753619F4E1AD00063894 /* YBAppConfig.swift */; };
 		EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		EDE1752E19F45C1300063894 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Splash.storyboard; path = ../Splash.storyboard; sourceTree = "<group>"; };
 		EDE1753019F45D2500063894 /* Credit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Credit.svg; sourceTree = "<group>"; };
 		EDE1753219F45D5C00063894 /* YBSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSplashViewController.swift; sourceTree = "<group>"; };
-		EDE1753419F46CCF00063894 /* YBParseSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBParseSettings.swift; sourceTree = "<group>"; };
+		EDE1753619F4E1AD00063894 /* YBAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAppConfig.swift; sourceTree = "<group>"; };
 		EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBCardTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,7 +221,7 @@
 			children = (
 				ED9D8A9D1941D65600B19ED3 /* YBNetrunnerDB.swift */,
 				ED9F34851944EA8700CFCFEA /* YBNetrunnerCard.swift */,
-				EDE1753419F46CCF00063894 /* YBParseSettings.swift */,
+				EDE1753619F4E1AD00063894 /* YBAppConfig.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -414,10 +414,10 @@
 				ED0FCA3C1948921100CAEA18 /* YBLoadingViewController.swift in Sources */,
 				ED9F34861944EA8700CFCFEA /* YBNetrunnerCard.swift in Sources */,
 				ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */,
+				EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */,
 				EDE1753319F45D5C00063894 /* YBSplashViewController.swift in Sources */,
 				ED56F8F619459C360009E67B /* String+Contains.swift in Sources */,
 				EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */,
-				EDE1753519F46CCF00063894 /* YBParseSettings.swift in Sources */,
 				ED9D8A7F1941D57E00B19ED3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,7 @@ class YBNetrunnerDB: NSObject {
     
     var baseURL:NSURL?
     var cards:Array<YBNetrunnerCard> = []
+    var sets:Array<YBNetrunnerSet> = []
     var myDelegate:YBNetrunnerDelegate?
     
     func loadCards(){
@@ -31,11 +32,13 @@ class YBNetrunnerDB: NSObject {
         var progress:NSProgress?
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFJSONResponseSerializer()
+        
+        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.allZeros)
         let operation = manager.HTTPRequestOperationWithRequest(request,
             success: {
                 (operation:AFHTTPRequestOperation!, obj:AnyObject!) in
                 self.receivedJSON(obj as? NSArray)
+                self.loadSets()
             }, failure: {
                 (operation:AFHTTPRequestOperation!, error:NSError!) in
                 self.errorReceived(error)
@@ -46,6 +49,26 @@ class YBNetrunnerDB: NSObject {
             self.myDelegate?.progressed?(progress)
         }
         operation.start()
+    }
+    
+    func loadSets(){
+        YBAppConfig.getConfig { (config:PFConfig!, e:NSError!) -> () in
+            let setURL = config["sets_url"] as String
+            let manager = AFHTTPRequestOperationManager()
+            manager.GET(setURL, parameters: nil, success: { (op:AFHTTPRequestOperation!, obj:AnyObject!) -> Void in
+                let rawSets = obj as NSArray
+                self.sets.removeAll(keepCapacity: true)
+                for dict:AnyObject in rawSets {
+                    let set = YBNetrunnerSet(dictionary: dict as NSDictionary)
+                    self.sets.append(set)
+                }
+                self.sets.sort { $0.idx < $1.idx }
+                    
+                
+                }, failure: nil)
+        }
+
+
     }
 
     func loadSettings(){

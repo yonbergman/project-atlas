@@ -151,8 +151,11 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     @IBAction func showMenu(sender: AnyObject) {
-self.revealController.showViewController(self.revealController.leftViewController)
-        
+        if (self.revealController.state.value == 2) {
+            self.revealController.showViewController(self.revealController.frontViewController)
+        } else {
+            self.revealController.showViewController(self.revealController.leftViewController)
+        }
     }
     // #pragma mark - Searching
     

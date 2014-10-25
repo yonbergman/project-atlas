@@ -28,7 +28,8 @@ class YBReavealViewController: PKRevealController {
             self.frontViewController = frontvc
         }
         
-        let m = self.storyboard?.instantiateViewControllerWithIdentifier("menu") as UITableViewController?
+        let m = self.storyboard?.instantiateViewControllerWithIdentifier("menu") as YBMenuTableViewController
+        m.netrunnerDB = netrunnerDB!
         self.leftViewController = m
     }
 

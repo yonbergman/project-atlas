@@ -32,7 +32,7 @@ class YBNetrunnerCard {
     var imageURL:NSURL {
 //        let imagePath = largeImageSrc.isEmpty ? imageSrc : largeImageSrc
         let imageUrl = "http://netrunnerdb.com\(imageSrc)"
-        return NSURL(string: imageUrl)
+        return NSURL(string: imageUrl)!
     }
 
     // #pragma mark relevent

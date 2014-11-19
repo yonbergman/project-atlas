@@ -42,7 +42,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         super.viewDidLoad()
     }
     
-    // #pragma mark - Table View
+    // MARK: Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -95,14 +95,14 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         return self.tableView
     }
 
-    // #pragma mark - Netrunner DB Delegate
+    // MARK: Netrunner DB Delegate
     
     func fetchedCards() {
         self.tableView.reloadData()
         setupPhotoBrowser()
     }
     
-    // #pragma mark - Photo Browser
+    // MARK: Photo Browser
     
     func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
         if let browser = forBrowser{
@@ -127,7 +127,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     func setupPhotoBrowser(){
-        self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.cards)
+        self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.filteredCards)
     }
     
     func photoBrowser(photoBrowser:IDMPhotoBrowser, didDismissAtPageIndex index:Int){
@@ -152,10 +152,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         }
     }
     
-    @IBAction func showMenu(sender: AnyObject) {
-        
-    }
-    // #pragma mark - Searching
+    // MARK: Searching
     
     @IBAction func startSearch(sender : UIBarButtonItem) {
         showSearchBar()
@@ -186,7 +183,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             "query": searchString
         ]
         PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
-        self.searchResults = netrunnerDB.cards.filter { card in
+        self.searchResults = netrunnerDB.filteredCards.filter { card in
             if typeSearch{
                 return card.matchType(trimmedString)
             } else {
@@ -194,6 +191,21 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             }
         }
         return true
+    }
+    
+    // MARK: Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "sets" {
+            let setVC = (segue.destinationViewController as YBSetListViewController)
+            setVC.netrunnerDB = self.netrunnerDB
+        }
+    }
+    
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+        setupPhotoBrowser()
+        self.tableView.reloadData()
+        
     }
 
 }

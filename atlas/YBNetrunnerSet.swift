@@ -8,7 +8,14 @@
 
 import UIKit
 
+
+@objc protocol YBNetrunnerSetDelegate {
+    func setSelectionUpdated(set: YBNetrunnerSet)
+}
+
 class YBNetrunnerSet: NSObject {
+    var delegate:YBNetrunnerSetDelegate?
+
     var data:NSDictionary
     init(dictionary: NSDictionary){
         data = dictionary
@@ -21,15 +28,22 @@ class YBNetrunnerSet: NSObject {
     var idx:UInt { return (self.cycleNumber) * 10 + (data["number"] as UInt)  }
     var cycle:String? {
         switch self.cycleNumber{
-            case 2: return "Genesis Cycle"
-            case 4: return "Spin Cycle"
-            case 6: return "Lunar Cycle"
-            case 8: return "SanSan Cycle"
+            case 2: return "Genesis"
+            case 4: return "Spin"
+            case 6: return "Lunar"
+            case 8: return "SanSan"
             default: return ""
         }
     }
+    var isReal:Bool{
+        return self.cycleNumber > 0
+    }
     
-    var selected:Bool
+    var selected:Bool {
+        didSet {
+            self.delegate?.setSelectionUpdated(self)
+        }
+    }
 
 
 }

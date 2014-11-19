@@ -14,11 +14,24 @@ import UIKit
     optional func errorFetchingCards(error: NSError)
 }
 
-class YBNetrunnerDB: NSObject {
+class YBNetrunnerDB: NSObject, YBNetrunnerSetDelegate{
     
     var baseURL:NSURL?
     var cards:Array<YBNetrunnerCard> = []
+    var filteredCardsInternal:Array<YBNetrunnerCard> = []
+    var filteredCards:Array<YBNetrunnerCard> {
+        get {
+            if self.filteredCardsInternal.isEmpty {
+                self.filteredCardsInternal = self.filterCards()
+            }
+            return self.filteredCardsInternal
+        }
+    }
+    func resetCardFilter(){
+        self.filteredCardsInternal = []
+    }
     var sets:Array<YBNetrunnerSet> = []
+    var setMapping:Dictionary<String, YBNetrunnerSet> = [:]
     var myDelegate:YBNetrunnerDelegate?
     
     func loadCards(){
@@ -59,7 +72,13 @@ class YBNetrunnerDB: NSObject {
                 self.sets.removeAll(keepCapacity: true)
                 for dict:AnyObject in rawSets {
                     let set = YBNetrunnerSet(dictionary: dict as NSDictionary)
-                    self.sets.append(set)
+                    if set.isReal {
+                        self.sets.append(set)
+                        self.setMapping[set.code] = set
+                        set.delegate = self
+
+                    }
+                    
                 }
                 self.sets.sort { $0.idx < $1.idx }
                     
@@ -96,13 +115,29 @@ class YBNetrunnerDB: NSObject {
     }
     
     func count() -> Int {
-        return cards.count
+        return filteredCards.count
     }
     
     subscript(index: Int) -> YBNetrunnerCard {
         get {
-            return cards[index]
+            return filteredCards[index]
         }
+    }
+    
+    func filterCards() -> Array<YBNetrunnerCard>{
+        return self.cards.filter { (card) -> Bool in
+            let set = self.setMapping[card.setCode]
+            if set != nil {
+                return set!.selected
+            } else {
+                return true
+            }
+        }
+    }
+    
+    func setSelectionUpdated(set:YBNetrunnerSet){
+        self.resetCardFilter()
+        self.count()
     }
 
     

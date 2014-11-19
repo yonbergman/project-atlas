@@ -10,19 +10,22 @@ import UIKit
 
 class YBSetListViewCell: UITableViewCell {
 
+    var set:YBNetrunnerSet!{
+        didSet{
+            self.setName.text = self.set.name
+            self.cycleName.text = self.set.cycle
+            if self.set.cycle == nil {
+                self.cycleName.hidden = true
+            }
+            self.checkmarkImg.hidden = !self.set.selected
+        }
+    }
     @IBOutlet weak var setName: UILabel!
     @IBOutlet weak var cycleName: UILabel!
     @IBOutlet weak var checkmarkImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.accessoryType = .Checkmark
-//        self.selected = true
     }
-
-//    override func setSelected(selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        self.checkmarkImg.hidden = !selected
-//    }
-
+    
 }

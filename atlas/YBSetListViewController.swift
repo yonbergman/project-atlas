@@ -8,9 +8,15 @@
 
 import UIKit
 
-class YBSetListViewController: UITableViewController {
+@objc protocol YBSetListDelegate {
+    func setListDone()
+}
+
+class YBSetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var netrunnerDB:YBNetrunnerDB!
+    var delegate:YBSetListDelegate?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +32,18 @@ class YBSetListViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return netrunnerDB.sets.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("setCell", forIndexPath: indexPath) as YBSetListViewCell
         let set = self.setForIndexPath(indexPath)
-        cell.setName.text = set.name
-        cell.cycleName.text = set.cycle
-        cell.selected = set.selected
+        cell.set = set;
         return cell
     }
     
@@ -47,7 +51,11 @@ class YBSetListViewController: UITableViewController {
         return netrunnerDB.sets[indexPath.row]
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.cellForRowAtIndexPath(indexPath)?.selected = false
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let set = setForIndexPath(indexPath)
+        set.selected = !set.selected
+        (tableView.cellForRowAtIndexPath(indexPath)? as YBSetListViewCell).set = set
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

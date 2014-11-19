@@ -139,6 +139,21 @@ class YBNetrunnerDB: NSObject, YBNetrunnerSetDelegate{
         self.resetCardFilter()
         self.count()
     }
+    
+    // MARK: Cycles
+    
+    func numberOfCycles() -> Int{
+        return 8
+    }
+    
+    func cycle(cycleId:Int) -> [YBNetrunnerSet] {
+        let cycleUint = UInt(cycleId)
+        return self.sets.filter { (set) -> Bool in
+            return set.cycleNumber == cycleUint
+        }
+    }
+    
+    
 
     
 }

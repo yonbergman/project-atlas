@@ -13,10 +13,7 @@ class YBSetListViewCell: UITableViewCell {
     var set:YBNetrunnerSet!{
         didSet{
             self.setName.text = self.set.name
-            self.cycleName.text = self.set.cycle
-            if self.set.cycle == nil {
-                self.cycleName.hidden = true
-            }
+            self.cycleName.hidden = true
             self.checkmarkImg.hidden = !self.set.selected
         }
     }

@@ -26,8 +26,12 @@ class YBNetrunnerSet: NSObject {
     var code:String { return data["code"] as String }
     var cycleNumber:UInt { return (data["cyclenumber"] as UInt) }
     var idx:UInt { return (self.cycleNumber) * 10 + (data["number"] as UInt)  }
-    var cycle:String? {
-        switch self.cycleNumber{
+    var cycle:String {
+        return YBNetrunnerSet.cycleName(self.cycleNumber)
+    }
+
+    class func cycleName(number:UInt) -> String{
+        switch number{
             case 2: return "Genesis"
             case 4: return "Spin"
             case 6: return "Lunar"

@@ -172,7 +172,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
 
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
-        var trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
         
         let typeSearch = startsWith(trimmedString, "s:")
         if typeSearch {

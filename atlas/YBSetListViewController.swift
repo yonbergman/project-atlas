@@ -33,11 +33,33 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Table view data source
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return self.netrunnerDB.numberOfCycles()
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section < 2 { return 0 }
+        let cycle = YBNetrunnerSet.cycleName(UInt(section))
+        if cycle.isEmpty {
+            return 10;
+        } else {
+            return 30;
+        }
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as YBSetListViewCell
+        let cycle = YBNetrunnerSet.cycleName(UInt(section))
+        if cycle.isEmpty {
+            cell.setName.text = ""
+            return cell
+        } else {
+            cell.setName.text = "\(cycle) Cycle"
+            return cell
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return netrunnerDB.sets.count
+        return netrunnerDB.cycle(section).count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -48,7 +70,7 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func setForIndexPath(indexPath: NSIndexPath) -> YBNetrunnerSet{
-        return netrunnerDB.sets[indexPath.row]
+        return netrunnerDB.cycle(indexPath.section)[indexPath.row]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -58,4 +80,5 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
 }

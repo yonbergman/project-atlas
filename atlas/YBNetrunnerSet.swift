@@ -17,7 +17,17 @@ class YBNetrunnerSet: NSObject {
     
     var name:String { return data["name"] as String }
     var code:String { return data["code"] as String }
-    var idx:UInt { return (data["cyclenumber"] as UInt) * 10 + (data["number"] as UInt)  }
+    var cycleNumber:UInt { return (data["cyclenumber"] as UInt) }
+    var idx:UInt { return (self.cycleNumber) * 10 + (data["number"] as UInt)  }
+    var cycle:String? {
+        switch self.cycleNumber{
+            case 2: return "Genesis Cycle"
+            case 4: return "Spin Cycle"
+            case 6: return "Lunar Cycle"
+            case 8: return "SanSan Cycle"
+            default: return ""
+        }
+    }
     
     var selected:Bool
 

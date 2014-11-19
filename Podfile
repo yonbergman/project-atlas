@@ -8,7 +8,6 @@ target "atlas" do
   #pod 'Dollar', '~> 0.2'
   pod 'PocketSVG', '~> 0.6'
   pod 'Parse', '~> 1.4'
-  pod 'PKRevealController', '~> 2.0.6'
 end
 
 

@@ -32,8 +32,7 @@ class YBNetrunnerDB: NSObject {
         var progress:NSProgress?
         
         let manager = AFHTTPRequestOperationManager()
-        
-        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.allZeros)
+        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .allZeros)
         let operation = manager.HTTPRequestOperationWithRequest(request,
             success: {
                 (operation:AFHTTPRequestOperation!, obj:AnyObject!) in

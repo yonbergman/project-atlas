@@ -8,15 +8,13 @@
 
 import UIKit
 
-class YBMenuTableViewController: UITableViewController {
+class YBSetListViewController: UITableViewController {
     
     var netrunnerDB:YBNetrunnerDB!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
     }
-    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,9 +35,10 @@ class YBMenuTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("setCell", forIndexPath: indexPath) as YBMenuItemTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("setCell", forIndexPath: indexPath) as YBSetListViewCell
         let set = self.setForIndexPath(indexPath)
         cell.setName.text = set.name
+        cell.cycleName.text = set.cycle
         cell.selected = set.selected
         return cell
     }

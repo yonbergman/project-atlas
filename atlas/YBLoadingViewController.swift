@@ -34,8 +34,7 @@ class YBLoadingViewController: UIViewController, YBNetrunnerDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "loaded" {
-            let rvc = segue.destinationViewController as YBReavealViewController
-            rvc.netrunnerDB = cardDb
+            ((segue.destinationViewController as UINavigationController).topViewController as YBCardListViewController).netrunnerDB = cardDb
         }
     }
     

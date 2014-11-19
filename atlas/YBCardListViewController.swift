@@ -106,6 +106,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
         if let browser = forBrowser{
+            PFAnalytics.trackEventInBackground("clicked-card", block: nil)
             browser.setInitialPageIndex(UInt(indexPath.row))
             self.presentViewController(browser, animated: true, completion: nil)
         }
@@ -120,7 +121,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         let browser = IDMPhotoBrowser(photos: photos)
         browser.delegate = self
         browser.displayArrowButton = false
-        browser.displayActionButton = false
+        browser.displayActionButton = true
+
         return browser
     }
     
@@ -151,11 +153,7 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     @IBAction func showMenu(sender: AnyObject) {
-        if (self.revealController.state.value == 2) {
-            self.revealController.showViewController(self.revealController.frontViewController)
-        } else {
-            self.revealController.showViewController(self.revealController.leftViewController)
-        }
+        
     }
     // #pragma mark - Searching
     
@@ -184,6 +182,10 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             trimmedString.removeRange(Range(start:trimmedString.startIndex, end: advance(trimmedString.startIndex, 2)))
             
         }
+        let dimensions = [
+            "query": searchString
+        ]
+        PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
         self.searchResults = netrunnerDB.cards.filter { card in
             if typeSearch{
                 return card.matchType(trimmedString)

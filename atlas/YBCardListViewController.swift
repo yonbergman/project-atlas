@@ -197,12 +197,14 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sets" {
+            PFAnalytics.trackEventInBackground("showSets", block: nil)
             let setVC = (segue.destinationViewController as YBSetListViewController)
             setVC.netrunnerDB = self.netrunnerDB
         }
     }
     
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
+        PFAnalytics.trackEventInBackground("hideSets", block: nil)
         setupPhotoBrowser()
         self.tableView.reloadData()
         

@@ -54,7 +54,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runner.png" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="runner.png" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
                                             <rect key="frame" x="0.0" y="-1" width="50" height="51"/>
                                             <color key="backgroundColor" red="0.41542134679999998" green="1" blue="0.1814658697" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -218,12 +218,12 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mala Tempura" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGc-Sb-GW4">
                                                     <rect key="frame" x="51" y="3" width="539" height="23"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.16471742561952515" green="0.25745994414604018" blue="0.39455283149171272" alpha="0.28000000000000003" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.29481276729998507" green="0.36999391423304584" blue="0.50822254834254144" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="lGc-Sb-GW4" secondAttribute="trailing" constant="10" id="RgL-aJ-N7U"/>
                                                 <constraint firstItem="lGc-Sb-GW4" firstAttribute="top" secondItem="ekl-1F-p5N" secondAttribute="top" priority="999" constant="6" id="gqN-Tu-79F"/>

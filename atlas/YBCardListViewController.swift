@@ -122,6 +122,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         browser.delegate = self
         browser.displayArrowButton = false
         browser.displayActionButton = true
+        browser.presentedActivityViewControllerApplicationActivities = [YBNetrunnerDbActivity(netrunnerDB: self.netrunnerDB)]
+
 
         return browser
     }

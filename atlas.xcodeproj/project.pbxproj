@@ -14,6 +14,7 @@
 		ED4DF35A19F5354F00BBDEA5 /* YBNetrunnerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF35919F5354F00BBDEA5 /* YBNetrunnerSet.swift */; };
 		ED4DF35C19F5385100BBDEA5 /* YBSetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DF35B19F5385100BBDEA5 /* YBSetListViewController.swift */; };
 		ED56F8F619459C360009E67B /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED56F8F519459C360009E67B /* String+Contains.swift */; };
+		ED7E8E381A251AC400EBA21B /* YBNetrunnerDbActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7E8E371A251AC400EBA21B /* YBNetrunnerDbActivity.swift */; };
 		ED9D8A7F1941D57E00B19ED3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */; };
 		ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */; };
 		ED9D8A861941D57E00B19ED3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9D8A841941D57E00B19ED3 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		ED4DF35919F5354F00BBDEA5 /* YBNetrunnerSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBNetrunnerSet.swift; sourceTree = "<group>"; };
 		ED4DF35B19F5385100BBDEA5 /* YBSetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSetListViewController.swift; sourceTree = "<group>"; };
 		ED56F8F519459C360009E67B /* String+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Contains.swift"; sourceTree = "<group>"; };
+		ED7E8E371A251AC400EBA21B /* YBNetrunnerDbActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBNetrunnerDbActivity.swift; sourceTree = "<group>"; };
 		ED9D8A791941D57E00B19ED3 /* atlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = atlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9D8A7D1941D57E00B19ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */,
 				ED4DF35B19F5385100BBDEA5 /* YBSetListViewController.swift */,
 				EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */,
+				ED7E8E371A251AC400EBA21B /* YBNetrunnerDbActivity.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */,
 				ED56F8F619459C360009E67B /* String+Contains.swift in Sources */,
 				ED4DF35C19F5385100BBDEA5 /* YBSetListViewController.swift in Sources */,
+				ED7E8E381A251AC400EBA21B /* YBNetrunnerDbActivity.swift in Sources */,
 				EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */,
 				ED9D8A7F1941D57E00B19ED3 /* AppDelegate.swift in Sources */,
 			);

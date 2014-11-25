@@ -54,8 +54,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="runner.png" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
-                                            <rect key="frame" x="0.0" y="-1" width="50" height="51"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runner.png" translatesAutoresizingMaskIntoConstraints="NO" id="K9r-Dc-VMb">
+                                            <rect key="frame" x="0.0" y="-0.5" width="50" height="50"/>
                                             <color key="backgroundColor" red="0.41542134679999998" green="1" blue="0.1814658697" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="GWt-3X-19x"/>
@@ -75,7 +75,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="6.5" translatesAutoresizingMaskIntoConstraints="NO" id="vNW-DM-6dJ">
-                                            <rect key="frame" x="587" y="4" width="7" height="50"/>
+                                            <rect key="frame" x="587" y="4" width="6.5" height="50"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="••">
                                                     <attributes>

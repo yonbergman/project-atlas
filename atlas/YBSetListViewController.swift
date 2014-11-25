@@ -14,9 +14,12 @@ import UIKit
 
 class YBSetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     var netrunnerDB:YBNetrunnerDB!
     var delegate:YBSetListDelegate?
+    var selectStateDeselect = false
 
+    @IBOutlet weak var selectButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +87,17 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
             "cycle": set.cycle,
             "didSelect": set.selected ? "true" : "false"
             ], block: nil)
-        
-
     }
+    
+    @IBAction func toggleSelect(sender: AnyObject) {
+        self.selectButton.title = self.selectStateDeselect ? "Deselect All" : "Select All"
+        for set in self.netrunnerDB.sets {
+            set.selected = self.selectStateDeselect
+        }
+        self.selectStateDeselect = !self.selectStateDeselect
+        self.tableView.reloadData()
+        
+    }
+    
     
 }

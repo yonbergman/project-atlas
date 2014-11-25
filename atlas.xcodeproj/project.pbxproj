@@ -40,9 +40,6 @@
 		EDBE94B01945A6950050BA97 /* weyland-consortium.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBE949E1945A6950050BA97 /* weyland-consortium.png */; };
 		EDBE94B11945A6950050BA97 /* weyland-consortium@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBE949F1945A6950050BA97 /* weyland-consortium@2x.png */; };
 		EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */; };
-		EDE1752F19F45C1300063894 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE1752E19F45C1300063894 /* Splash.storyboard */; };
-		EDE1753119F45D2500063894 /* Credit.svg in Resources */ = {isa = PBXBuildFile; fileRef = EDE1753019F45D2500063894 /* Credit.svg */; };
-		EDE1753319F45D5C00063894 /* YBSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753219F45D5C00063894 /* YBSplashViewController.swift */; };
 		EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753619F4E1AD00063894 /* YBAppConfig.swift */; };
 		EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -111,9 +108,6 @@
 		EDBE949F1945A6950050BA97 /* weyland-consortium@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weyland-consortium@2x.png"; sourceTree = "<group>"; };
 		EDC8A1481944F7820066901C /* PodHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodHeader.h; sourceTree = "<group>"; };
 		EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSetListViewCell.swift; sourceTree = "<group>"; };
-		EDE1752E19F45C1300063894 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Splash.storyboard; path = ../Splash.storyboard; sourceTree = "<group>"; };
-		EDE1753019F45D2500063894 /* Credit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Credit.svg; sourceTree = "<group>"; };
-		EDE1753219F45D5C00063894 /* YBSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSplashViewController.swift; sourceTree = "<group>"; };
 		EDE1753619F4E1AD00063894 /* YBAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAppConfig.swift; sourceTree = "<group>"; };
 		EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBCardTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,7 +171,6 @@
 				ED9F34841944EA6D00CFCFEA /* Models */,
 				ED9D8A7E1941D57E00B19ED3 /* AppDelegate.swift */,
 				ED9D8A841941D57E00B19ED3 /* Main.storyboard */,
-				EDE1752E19F45C1300063894 /* Splash.storyboard */,
 				EDC8A1481944F7820066901C /* PodHeader.h */,
 				ED56F8F519459C360009E67B /* String+Contains.swift */,
 				ED9D8A7C1941D57E00B19ED3 /* Supporting Files */,
@@ -217,7 +210,6 @@
 				ED9D8A801941D57E00B19ED3 /* YBCardListViewController.swift */,
 				EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */,
 				ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */,
-				EDE1753219F45D5C00063894 /* YBSplashViewController.swift */,
 				ED4DF35B19F5385100BBDEA5 /* YBSetListViewController.swift */,
 				EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */,
 			);
@@ -238,7 +230,6 @@
 		EDBE94691945A5610050BA97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EDE1753019F45D2500063894 /* Credit.svg */,
 				EDBE948E1945A6950050BA97 /* anarch.png */,
 				EDBE948F1945A6950050BA97 /* anarch@2x.png */,
 				EDBE94901945A6950050BA97 /* corp.png */,
@@ -366,9 +357,7 @@
 				EDBE94A01945A6950050BA97 /* anarch.png in Resources */,
 				EDBE94AF1945A6950050BA97 /* shaper@2x.png in Resources */,
 				EDBE94A11945A6950050BA97 /* anarch@2x.png in Resources */,
-				EDE1753119F45D2500063894 /* Credit.svg in Resources */,
 				EDBE94AB1945A6950050BA97 /* nbn@2x.png in Resources */,
-				EDE1752F19F45C1300063894 /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +415,6 @@
 				ED9D8A811941D57E00B19ED3 /* YBCardListViewController.swift in Sources */,
 				EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */,
 				EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */,
-				EDE1753319F45D5C00063894 /* YBSplashViewController.swift in Sources */,
 				ED56F8F619459C360009E67B /* String+Contains.swift in Sources */,
 				ED4DF35C19F5385100BBDEA5 /* YBSetListViewController.swift in Sources */,
 				EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */,

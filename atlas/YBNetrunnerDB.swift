@@ -143,7 +143,7 @@ class YBNetrunnerDB: NSObject, YBNetrunnerSetDelegate{
     // MARK: Cycles
     
     func numberOfCycles() -> Int{
-        return 8
+        return Int(self.sets.last!.cycleNumber) + 1
     }
     
     func cycle(cycleId:Int) -> [YBNetrunnerSet] {

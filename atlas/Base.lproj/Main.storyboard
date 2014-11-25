@@ -311,6 +311,12 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Sets" id="dir-CL-8ee">
+                                        <barButtonItem key="leftBarButtonItem" title="Deselect All" id="GsR-Yq-wUt">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="toggleSelect:" destination="b7Y-ek-jfX" id="v7q-9a-IZu"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ZDv-hH-jsI">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -333,6 +339,10 @@
                             <constraint firstItem="GCu-i5-e4l" firstAttribute="leading" secondItem="Vs6-M1-qne" secondAttribute="leading" id="xOc-7X-Hkt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="selectButton" destination="GsR-Yq-wUt" id="oGR-l4-VG9"/>
+                        <outlet property="tableView" destination="GCu-i5-e4l" id="JWq-aC-9rq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCS-qC-3yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Idb-JB-CE4" userLabel="Exit" sceneMemberID="exit"/>

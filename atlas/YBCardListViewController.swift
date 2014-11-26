@@ -114,7 +114,12 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     
     func createPhotoBrowserFromCards(cards:[YBNetrunnerCard]) -> IDMPhotoBrowser{
         var photos:[IDMPhoto] = cards.map { card in
-            let photo = IDMPhoto(URL: card.imageURL)
+            var photo:IDMPhoto
+            if card.imageSrc != "" {
+                photo = IDMPhoto(URL: card.imageURL)
+            } else {
+                photo = IDMPhoto(image: UIImage(named: "no-image"))
+            }
             photo.caption = card.title
             return photo
         }

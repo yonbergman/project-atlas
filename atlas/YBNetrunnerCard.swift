@@ -19,12 +19,14 @@ class YBNetrunnerCard {
     var type:String { return data["type"] as String }
     var subtype:String? { return data["subtype"] as? String }
     var subtitle:String {
-        if let st = self.subtype{
+        if let st = self.subtype {
+            if st.isEmpty { return self.type }
             return "\(type): \(st)"
         } else {
             return self.type
         }
     }
+    var text:String{ return data["text"] as String }
     
     // #pragma mark images
     var imageSrc:String { return data["imagesrc"] as String }

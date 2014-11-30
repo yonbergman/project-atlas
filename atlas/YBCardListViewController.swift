@@ -120,7 +120,8 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
             } else {
                 photo = IDMPhoto(image: UIImage(named: "no-image"))
             }
-            photo.caption = card.title
+            photo.caption = card.title + "\n" + card.subtitle
+            
             return photo
         }
         let browser = IDMPhotoBrowser(photos: photos)

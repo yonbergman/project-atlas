@@ -26,7 +26,8 @@ class YBNetrunnerDbActivity: UIActivity {
     }
 
     override func prepareWithActivityItems(activityItems: [AnyObject]) {
-        let cardTitle = activityItems.last as String
+        var cardTitle = activityItems.last as String
+        cardTitle = cardTitle.componentsSeparatedByString("\n").first!
         let cards = self.netrunnerDB.cards.filter { (card) -> Bool in
             return card.title == cardTitle
         }

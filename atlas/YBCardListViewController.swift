@@ -185,23 +185,11 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
 
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
-        var trimmedString = searchString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
-        
-        let typeSearch = startsWith(trimmedString, "s:")
-        if typeSearch {
-            trimmedString.removeRange(Range(start:trimmedString.startIndex, end: advance(trimmedString.startIndex, 2)))
-        }
         let dimensions = [
             "query": searchString
         ]
         PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
-        self.searchResults = netrunnerDB.filteredCards.filter { card in
-            if typeSearch{
-                return card.matchType(trimmedString)
-            } else {
-                return card.matchTitle(trimmedString)
-            }
-        }
+        self.searchResults = YBCardSearch(netrunnerDB: netrunnerDB).search(searchString)
         return true
     }
     

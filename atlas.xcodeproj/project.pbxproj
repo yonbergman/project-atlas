@@ -40,6 +40,7 @@
 		EDBE94AF1945A6950050BA97 /* shaper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBE949D1945A6950050BA97 /* shaper@2x.png */; };
 		EDBE94B01945A6950050BA97 /* weyland-consortium.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBE949E1945A6950050BA97 /* weyland-consortium.png */; };
 		EDBE94B11945A6950050BA97 /* weyland-consortium@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBE949F1945A6950050BA97 /* weyland-consortium@2x.png */; };
+		EDC6541B1A2C6F9E000061B8 /* YBCardSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6541A1A2C6F9E000061B8 /* YBCardSearch.swift */; };
 		EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */; };
 		EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753619F4E1AD00063894 /* YBAppConfig.swift */; };
 		EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		EDBE949D1945A6950050BA97 /* shaper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shaper@2x.png"; sourceTree = "<group>"; };
 		EDBE949E1945A6950050BA97 /* weyland-consortium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weyland-consortium.png"; sourceTree = "<group>"; };
 		EDBE949F1945A6950050BA97 /* weyland-consortium@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weyland-consortium@2x.png"; sourceTree = "<group>"; };
+		EDC6541A1A2C6F9E000061B8 /* YBCardSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBCardSearch.swift; sourceTree = "<group>"; };
 		EDC8A1481944F7820066901C /* PodHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodHeader.h; sourceTree = "<group>"; };
 		EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBSetListViewCell.swift; sourceTree = "<group>"; };
 		EDE1753619F4E1AD00063894 /* YBAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAppConfig.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				ED9F34851944EA8700CFCFEA /* YBNetrunnerCard.swift */,
 				EDE1753619F4E1AD00063894 /* YBAppConfig.swift */,
 				ED4DF35919F5354F00BBDEA5 /* YBNetrunnerSet.swift */,
+				EDC6541A1A2C6F9E000061B8 /* YBCardSearch.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */,
 				EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */,
 				ED56F8F619459C360009E67B /* String+Contains.swift in Sources */,
+				EDC6541B1A2C6F9E000061B8 /* YBCardSearch.swift in Sources */,
 				ED4DF35C19F5385100BBDEA5 /* YBSetListViewController.swift in Sources */,
 				ED7E8E381A251AC400EBA21B /* YBNetrunnerDbActivity.swift in Sources */,
 				EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */,

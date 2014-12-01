@@ -52,6 +52,9 @@ class YBNetrunnerCard {
 
     // #pragma mark faction
     var factionCode:String { return data["faction_code"] as String }
+    var side:String { return (data["side"] as String).lowercaseString }
+    var factionName:String { return (data["faction"] as String).lowercaseString }
+    var sideFaction:String { return side + " " + factionName }
     var sideCode:String { return data["side_code"] as String }
     var faction:String {
         if factionCode == "neutral" {
@@ -75,6 +78,15 @@ class YBNetrunnerCard {
         } else {
             return false
         }
+    }
+    
+    func matchFaction(queryString:String?) -> Bool {
+        if let query = queryString{
+            return self.sideFaction.containsIgnoreCase(query)
+        } else {
+            return false
+        }
+
     }
 
     

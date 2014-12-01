@@ -139,6 +139,11 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
     }
     
     func photoBrowser(photoBrowser:IDMPhotoBrowser, didDismissAtPageIndex index:Int){
+        if photoBrowser == self.photoBrowser {
+            setupPhotoBrowser()
+        } else {
+            self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
+        }
         highlightCellAtRow(index)
     }
     
@@ -185,7 +190,6 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
         let typeSearch = startsWith(trimmedString, "s:")
         if typeSearch {
             trimmedString.removeRange(Range(start:trimmedString.startIndex, end: advance(trimmedString.startIndex, 2)))
-            
         }
         let dimensions = [
             "query": searchString

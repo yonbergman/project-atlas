@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @objc protocol YBSetListDelegate {
     func setListDone()
@@ -20,18 +21,6 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     var selectStateDeselect = false
 
     @IBOutlet weak var selectButton: UIBarButtonItem!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
     // MARK: - Table view data source
 
@@ -50,7 +39,7 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as YBSetListViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! YBSetListViewCell
         let cycle = YBNetrunnerSet.cycleName(UInt(section))
         if cycle.isEmpty {
             cell.setName.text = ""
@@ -66,7 +55,7 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("setCell", forIndexPath: indexPath) as YBSetListViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("setCell", forIndexPath: indexPath) as! YBSetListViewCell
         let set = self.setForIndexPath(indexPath)
         cell.set = set;
         return cell
@@ -79,7 +68,7 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let set = setForIndexPath(indexPath)
         set.selected = !set.selected
-        (tableView.cellForRowAtIndexPath(indexPath)? as YBSetListViewCell).set = set
+        (tableView.cellForRowAtIndexPath(indexPath) as! YBSetListViewCell).set = set
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         PFAnalytics.trackEventInBackground("selectSet", dimensions: [
@@ -96,7 +85,6 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
         }
         self.selectStateDeselect = !self.selectStateDeselect
         self.tableView.reloadData()
-        
     }
     
     

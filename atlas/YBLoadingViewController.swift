@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DACircularProgress
 
 class YBLoadingViewController: UIViewController, YBNetrunnerDelegate {
 
@@ -34,7 +35,7 @@ class YBLoadingViewController: UIViewController, YBNetrunnerDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "loaded" {
-            ((segue.destinationViewController as UINavigationController).topViewController as YBCardListViewController).netrunnerDB = cardDb
+            ((segue.destinationViewController as! UINavigationController).topViewController as! YBCardListViewController).netrunnerDB = cardDb
         }
     }
     

@@ -6,9 +6,6 @@
 //  Copyright (c) 2014 Yonatan Bergman. All rights reserved.
 //
 
-#import <AFNetworking/AFNetworking.h>
-#import <IDMPhotoBrowser/IDMPhotoBrowser.h>
-#import <NSString+Ruby.h>
-#import <DACircularProgressView.h>
-#import <BlocksKit.h>
-#import <Parse/Parse.h>
+//#import <IDMPhotoBrowser/IDMPhotoBrowser.h>
+//#import <DACircularProgressView.h>
+//#import <Parse/Parse.h>

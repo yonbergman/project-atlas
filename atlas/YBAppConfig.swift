@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class YBAppConfig: NSObject {
     
     class func getConfig(callback: (PFConfig!, NSError!) -> ()){
-        PFConfig.getConfigInBackgroundWithBlock {
-            (var config: PFConfig!, error: NSError!) in
+        PFConfig.getConfigInBackgroundWithBlock { config, error in
             if error == nil {
                 callback(config, error)
             } else {

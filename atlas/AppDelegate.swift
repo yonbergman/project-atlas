@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        application.statusBarStyle = .LightContent
-        Parse.setApplicationId("EgQHHegfE3B4Bxa77C0RLY1IraE7mZkcqnYPCM62", clientKey: "tB23lnzYum8ds8VkQdeuyeA2lI515Rgx5WBsRY8P")
-        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
-        return true
-    }
-
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    application.statusBarStyle = .LightContent
+    Parse.setApplicationId("EgQHHegfE3B4Bxa77C0RLY1IraE7mZkcqnYPCM62", clientKey: "tB23lnzYum8ds8VkQdeuyeA2lI515Rgx5WBsRY8P")
+    PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
+    return true
+  }
+  
 }
 

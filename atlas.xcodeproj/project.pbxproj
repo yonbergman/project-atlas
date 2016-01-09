@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7258C4A4A9874BD598A6C8A0 /* libPods-atlas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B142BD92D24EB6BFF58049 /* libPods-atlas.a */; };
+		B071DD341C416A4B00B8CD46 /* IDMPBLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B071DD331C416A4B00B8CD46 /* IDMPBLocalizations.bundle */; };
 		ED036B4119459DCE00FA4D56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4019459DCE00FA4D56 /* Foundation.framework */; };
 		ED036B4319459DD200FA4D56 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4219459DD200FA4D56 /* CFNetwork.framework */; };
 		ED0FCA3C1948921100CAEA18 /* YBLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FCA3B1948921100CAEA18 /* YBLoadingViewController.swift */; };
@@ -44,6 +44,7 @@
 		EDD1E07019F70185007D815B /* YBSetListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD1E06F19F70185007D815B /* YBSetListViewCell.swift */; };
 		EDE1753719F4E1AD00063894 /* YBAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1753619F4E1AD00063894 /* YBAppConfig.swift */; };
 		EDF153B51944EE8B004435FA /* YBCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF153B41944EE8B004435FA /* YBCardTableViewCell.swift */; };
+		F86BED820506C93B1556FE45 /* Pods_atlas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AC522852A5F137FA60F2F6 /* Pods_atlas.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +71,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B575B372F9404DACA207F34F /* Pods-atlas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlas.xcconfig"; path = "Pods/Pods-atlas.xcconfig"; sourceTree = "<group>"; };
-		E1B142BD92D24EB6BFF58049 /* libPods-atlas.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-atlas.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23AC522852A5F137FA60F2F6 /* Pods_atlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_atlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B071DD331C416A4B00B8CD46 /* IDMPBLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IDMPBLocalizations.bundle; path = Pods/IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle; sourceTree = "<group>"; };
+		C44550C0DBBE7D9EA9F2CAE9 /* Pods-atlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-atlas/Pods-atlas.debug.xcconfig"; sourceTree = "<group>"; };
+		D40E9FE72EBEC92B2531522E /* Pods-atlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-atlas/Pods-atlas.release.xcconfig"; sourceTree = "<group>"; };
 		ED036B3E19459DC900FA4D56 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		ED036B4019459DCE00FA4D56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED036B4219459DD200FA4D56 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -123,7 +126,7 @@
 			files = (
 				ED036B4119459DCE00FA4D56 /* Foundation.framework in Frameworks */,
 				ED036B4319459DD200FA4D56 /* CFNetwork.framework in Frameworks */,
-				7258C4A4A9874BD598A6C8A0 /* libPods-atlas.a in Frameworks */,
+				F86BED820506C93B1556FE45 /* Pods_atlas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,13 +140,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06EDB3C650098D65D04D20E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C44550C0DBBE7D9EA9F2CAE9 /* Pods-atlas.debug.xcconfig */,
+				D40E9FE72EBEC92B2531522E /* Pods-atlas.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4B0464F029044A738AC545FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED036B4219459DD200FA4D56 /* CFNetwork.framework */,
 				ED036B4019459DCE00FA4D56 /* Foundation.framework */,
 				ED036B3E19459DC900FA4D56 /* CoreFoundation.framework */,
-				E1B142BD92D24EB6BFF58049 /* libPods-atlas.a */,
+				23AC522852A5F137FA60F2F6 /* Pods_atlas.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,11 +163,12 @@
 		ED9D8A701941D57E00B19ED3 = {
 			isa = PBXGroup;
 			children = (
+				B071DD331C416A4B00B8CD46 /* IDMPBLocalizations.bundle */,
 				ED9D8A7B1941D57E00B19ED3 /* atlas */,
 				ED9D8A901941D57E00B19ED3 /* atlasTests */,
 				ED9D8A7A1941D57E00B19ED3 /* Products */,
-				B575B372F9404DACA207F34F /* Pods-atlas.xcconfig */,
 				4B0464F029044A738AC545FD /* Frameworks */,
+				06EDB3C650098D65D04D20E7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +285,7 @@
 				ED9D8A771941D57E00B19ED3 /* Resources */,
 				EDDDCF4A1941F29300F28E58 /* Embed Frameworks */,
 				1C929ECC99584194A7F80478 /* Copy Pods Resources */,
+				A4CC2FAF25EA3FEAEFD0F6E3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,7 +321,9 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YB;
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Yonatan Bergman";
 				TargetAttributes = {
 					ED9D8A781941D57E00B19ED3 = {
@@ -344,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B071DD341C416A4B00B8CD46 /* IDMPBLocalizations.bundle in Resources */,
 				EDBE94A71945A6950050BA97 /* haas-bioroid@2x.png in Resources */,
 				EDBE94A91945A6950050BA97 /* jinteki@2x.png in Resources */,
 				EDBE94AC1945A6950050BA97 /* runner.png in Resources */,
@@ -389,7 +406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-atlas-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlas/Pods-atlas-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7B8C92543D2F4F70A5FB66FB /* Check Pods Manifest.lock */ = {
@@ -405,6 +422,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A4CC2FAF25EA3FEAEFD0F6E3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlas/Pods-atlas-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -480,6 +512,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -541,7 +574,7 @@
 		};
 		ED9D8A981941D57E00B19ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B575B372F9404DACA207F34F /* Pods-atlas.xcconfig */;
+			baseConfigurationReference = C44550C0DBBE7D9EA9F2CAE9 /* Pods-atlas.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -549,8 +582,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				INFOPLIST_FILE = atlas/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = atlas/PodHeader.h;
@@ -559,7 +593,7 @@
 		};
 		ED9D8A991941D57E00B19ED3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B575B372F9404DACA207F34F /* Pods-atlas.xcconfig */;
+			baseConfigurationReference = D40E9FE72EBEC92B2531522E /* Pods-atlas.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -567,8 +601,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				INFOPLIST_FILE = atlas/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = atlas/PodHeader.h;
@@ -590,6 +625,7 @@
 				INFOPLIST_FILE = atlasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -606,6 +642,7 @@
 				INFOPLIST_FILE = atlasTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};

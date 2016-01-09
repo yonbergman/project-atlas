@@ -7,208 +7,203 @@
 //
 
 import UIKit
+import IDMPhotoBrowser
+import Parse
 
 class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate, IDMPhotoBrowserDelegate {
 
-    var netrunnerDB:YBNetrunnerDB = YBNetrunnerDB(){
-        didSet{
-            netrunnerDB.myDelegate = self
-            setupPhotoBrowser()
-        }
+  var netrunnerDB = YBNetrunnerDB(){
+    didSet{
+      netrunnerDB.myDelegate = self
+      setupPhotoBrowser()
     }
-    var photoBrowser:IDMPhotoBrowser?
-    
-    var searchResults:[YBNetrunnerCard] = []{
-        didSet{
-            self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
-        }
-    }
-    var searchPhotoBrowser:IDMPhotoBrowser?
+  }
+  var photoBrowser: IDMPhotoBrowser?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            self.clearsSelectionOnViewWillAppear = false
-            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-        }
-        self.clearsSelectionOnViewWillAppear = false
+  var searchResults = [YBNetrunnerCard](){
+    didSet{
+      self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
+  }
+  var searchPhotoBrowser: IDMPhotoBrowser?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+      self.clearsSelectionOnViewWillAppear = false
+      self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
     }
-    
-    // MARK: Table View
+    self.clearsSelectionOnViewWillAppear = false
+  }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
+  // MARK: Table View
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if inSearchResults(tableView) {
-            return searchResults.count
-        } else {
-            return netrunnerDB.count()
-        }
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if inSearchResults(tableView) {
+      return searchResults.count
+    } else {
+      return netrunnerDB.count()
     }
+  }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as YBCardTableViewCell
-        cell.card = cardAt(tableView, indexPath: indexPath)
-        return cell
-    }
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as! YBCardTableViewCell
+    cell.card = cardAt(tableView, indexPath: indexPath)
+    return cell
+  }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var browser:IDMPhotoBrowser? = photoBrowser
-        if inSearchResults(tableView) {
-            browser = searchPhotoBrowser
-        }
-        self.displayCardInPhotoBrowser(indexPath, forBrowser: browser)
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    var browser:IDMPhotoBrowser? = photoBrowser
+    if inSearchResults(tableView) {
+      browser = searchPhotoBrowser
     }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
-    }
-    
-    func cardAt(tableView: UITableView,  indexPath: NSIndexPath) -> YBNetrunnerCard{
-        if inSearchResults(tableView) {
-            return searchResults[indexPath.row]
-        } else {
-            return netrunnerDB[indexPath.row]
-        }
-    }
-    
-    func inSearchResults(tableView: UITableView) -> Bool{
-        return tableView == searchDisplayController?.searchResultsTableView
-    }
-    
-    func currentTableView() -> UITableView {
-        if searchDisplayController?.active == true{
-            if let sdc = searchDisplayController {
-                return sdc.searchResultsTableView
-            }
-        }
-        return self.tableView
-    }
+    self.displayCardInPhotoBrowser(indexPath, forBrowser: browser)
+  }
 
-    // MARK: Netrunner DB Delegate
-    
-    func fetchedCards() {
-        self.tableView.reloadData()
-        setupPhotoBrowser()
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 50.0
+  }
+
+  func cardAt(tableView: UITableView,  indexPath: NSIndexPath) -> YBNetrunnerCard{
+    if inSearchResults(tableView) {
+      return searchResults[indexPath.row]
+    } else {
+      return netrunnerDB[indexPath.row]
     }
-    
-    // MARK: Photo Browser
-    
-    func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
-        if let browser = forBrowser{
-            PFAnalytics.trackEventInBackground("clicked-card", block: nil)
-            browser.setInitialPageIndex(UInt(indexPath.row))
-            self.presentViewController(browser, animated: true, completion: nil)
-        }
+  }
+
+  func inSearchResults(tableView: UITableView) -> Bool{
+    return tableView == searchDisplayController?.searchResultsTableView
+  }
+
+  func currentTableView() -> UITableView {
+    if searchDisplayController?.active == true{
+      if let sdc = searchDisplayController {
+        return sdc.searchResultsTableView
+      }
     }
-    
-    func createPhotoBrowserFromCards(cards:[YBNetrunnerCard]) -> IDMPhotoBrowser{
-        var photos:[IDMPhoto] = cards.map { card in
-            var photo:IDMPhoto
-            if card.imageSrc != "" {
-                photo = IDMPhoto(URL: card.imageURL)
-            } else {
-                photo = IDMPhoto(image: UIImage(named: "no-image"))
-            }
-            photo.caption = card.title + "\n" + card.subtitle
-            
-            return photo
-        }
-        let browser = IDMPhotoBrowser(photos: photos)
-        browser.delegate = self
-        browser.displayArrowButton = false
-        browser.displayActionButton = true
-        browser.presentedActivityViewControllerApplicationActivities = [YBNetrunnerDbActivity(netrunnerDB: self.netrunnerDB)]
+    return self.tableView
+  }
+
+  // MARK: Netrunner DB Delegate
+
+  func fetchedCards() {
+    self.tableView.reloadData()
+    setupPhotoBrowser()
+  }
+
+  // MARK: Photo Browser
+
+  func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
+    if let browser = forBrowser{
+      PFAnalytics.trackEventInBackground("clicked-card", block: nil)
+      browser.setInitialPageIndex(UInt(indexPath.row))
+      self.presentViewController(browser, animated: true, completion: nil)
+    }
+  }
+
+  func createPhotoBrowserFromCards(cards:[YBNetrunnerCard]) -> IDMPhotoBrowser{
+    let photos:[IDMPhoto] = cards.map { card in
+      var photo:IDMPhoto
+      if card.imageSrc != "" {
+        photo = IDMPhoto(URL: card.imageURL)
+      } else {
+        photo = IDMPhoto(image: UIImage(named: "no-image"))
+      }
+      photo.caption = card.title + "\n" + card.subtitle
+
+      return photo
+    }
+    let browser = IDMPhotoBrowser(photos: photos)
+    browser.displayDoneButton = true
+    browser.delegate = self
+    browser.displayArrowButton = false
+    browser.displayActionButton = true
+    browser.displayCounterLabel = false
+
+    //        browser.presentedActivityViewControllerApplicationActivities = [YBNetrunnerDbActivity(netrunnerDB: self.netrunnerDB)]
 
 
-        return browser
+    return browser
+  }
+
+  func setupPhotoBrowser(){
+    self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.filteredCards)
+  }
+
+
+  func photoBrowser(photoBrowser:IDMPhotoBrowser!, didDismissAtPageIndex index:UInt){
+    if photoBrowser == self.photoBrowser {
+      setupPhotoBrowser()
+    } else {
+      self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
     }
-    
-    func setupPhotoBrowser(){
-        self.photoBrowser = self.createPhotoBrowserFromCards(netrunnerDB.filteredCards)
-    }
-    
-    func photoBrowser(photoBrowser:IDMPhotoBrowser, didDismissAtPageIndex index:Int){
-        if photoBrowser == self.photoBrowser {
-            setupPhotoBrowser()
-        } else {
-            self.searchPhotoBrowser = createPhotoBrowserFromCards(searchResults)
-        }
-        highlightCellAtRow(index)
-    }
-    
-    func highlightCellAtRow(index:Int){
-        let tableView = self.currentTableView()
-        let indexPath = NSIndexPath(forRow: index, inSection: 0)
-        
-        
-        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        
-        let shouldScroll = contains(tableView.indexPathsForVisibleRows() as [NSIndexPath], indexPath);
-        if shouldScroll {
-            tableView.scrollToNearestSelectedRowAtScrollPosition(.Middle, animated: true)
-        }
-        
-        let delay = Double(NSEC_PER_SEC) * 0.2
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay)), dispatch_get_main_queue()){
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-    }
-    
-    // MARK: Searching
-    
-    @IBAction func startSearch(sender : UIBarButtonItem) {
-        showSearchBar()
-        self.searchDisplayController?.searchBar.becomeFirstResponder()
-    }
-    
-    func hideSearchBar() {
-        if let sdc = self.searchDisplayController {
-            sdc.searchBar.hidden = true
-            self.tableView.contentOffset = CGPointMake(0.0, sdc.searchBar.frame.height);
-        }
-    }
-    
-    func showSearchBar(){
-        self.searchDisplayController?.searchBar.hidden = false
-        self.tableView.contentOffset = CGPointMake(0.0, 0.0);
+    highlightCellAtRow(Int(index))
+  }
+
+  func highlightCellAtRow(index:Int){
+    let tableView = self.currentTableView()
+    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+
+    tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+
+    let shouldScroll = !tableView.indexPathsForVisibleRows!.contains(indexPath)
+    if shouldScroll {
+      tableView.scrollToNearestSelectedRowAtScrollPosition(.Middle, animated: true)
     }
 
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool{
-        let dimensions = [
-            "query": searchString
-        ]
-        PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
-        self.searchResults = YBCardSearch(netrunnerDB: netrunnerDB).search(searchString)
-        return true
+    let delay = Double(NSEC_PER_SEC) * 0.2
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay)), dispatch_get_main_queue()){
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    // MARK: Segues
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sets" {
-            PFAnalytics.trackEventInBackground("showSets", block: nil)
-            let setVC = (segue.destinationViewController as YBSetListViewController)
-            setVC.netrunnerDB = self.netrunnerDB
-        }
+  }
+
+  // MARK: Searching
+
+  @IBAction func startSearch(sender : UIBarButtonItem) {
+    showSearchBar()
+    self.searchDisplayController?.searchBar.becomeFirstResponder()
+  }
+
+  func hideSearchBar() {
+    if let sdc = self.searchDisplayController {
+      sdc.searchBar.hidden = true
+      self.tableView.contentOffset = CGPointMake(0.0, sdc.searchBar.frame.height);
     }
-    
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
-        PFAnalytics.trackEventInBackground("hideSets", block: nil)
-        setupPhotoBrowser()
-        self.tableView.reloadData()
-        
+  }
+
+  func showSearchBar(){
+    self.searchDisplayController?.searchBar.hidden = false
+    self.tableView.contentOffset = CGPointMake(0.0, 0.0);
+  }
+
+  func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool{
+    if let searchString = searchString {
+      let dimensions = [
+        "query": searchString
+      ]
+      PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
+      self.searchResults = YBCardSearch(netrunnerDB: netrunnerDB).search(searchString)
     }
+    return true
+  }
+
+  // MARK: Segues
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "sets" {
+      PFAnalytics.trackEventInBackground("showSets", block: nil)
+      let setVC = (segue.destinationViewController as! YBSetListViewController)
+      setVC.netrunnerDB = self.netrunnerDB
+    }
+  }
+
+  @IBAction func unwindToList(segue: UIStoryboardSegue) {
+    PFAnalytics.trackEventInBackground("hideSets", block: nil)
+    netrunnerDB.refreshFilters()
+    setupPhotoBrowser()
+    self.tableView.reloadData()
+  }
 
 }
 

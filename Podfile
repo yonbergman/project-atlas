@@ -1,11 +1,14 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
+use_frameworks!
 
 target "atlas" do
-  pod 'AFNetworking', '~> 2.2.4'
-  pod 'IDMPhotoBrowser', git: 'git@github.com:lolgear/IDMPhotoBrowser.git', commit: '7857b9d832ba2528b60605063e9243925ef8ac50'
-  pod 'NSString+Ruby', '~> 1.1'
-  pod 'BlocksKit', '~> 2.2'
-  pod 'Parse', '~> 1.4'
+  # pod 'AFNetworking', '~> 2.2.4'
+  pod 'IDMPhotoBrowser', '~> 1.8.1'
+  # pod 'NSString+Ruby', '~> 1.1'
+  # pod 'BlocksKit', '~> 2.2'
+  pod 'Parse'
+  pod 'Alamofire', '~> 3.0'
+  pod 'SwiftyJSON'
 end
 
 

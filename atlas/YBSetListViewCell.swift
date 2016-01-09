@@ -12,11 +12,12 @@ class YBSetListViewCell: UITableViewCell {
 
     var set:YBNetrunnerSet!{
         didSet{
-            self.setName.text = self.set.name
-            self.cycleName.hidden = true
-            self.checkmarkImg.hidden = !self.set.selected
+          self.setName.text = self.set.name
+          self.cycleName.hidden = true
+          self.checkmarkImg.hidden = !self.set.selected
         }
     }
+  
     @IBOutlet weak var setName: UILabel!
     @IBOutlet weak var cycleName: UILabel!
     @IBOutlet weak var checkmarkImg: UIImageView!

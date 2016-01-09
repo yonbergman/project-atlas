@@ -9,8 +9,7 @@
 import Foundation
 
 extension String {
- 
-    func containsIgnoreCase(other: String) -> Bool{
-        return self.lowercaseString.includes(other.lowercaseString)
-    }
+  func containsIgnoreCase(other: String) -> Bool{
+    return self.lowercaseString.containsString(other.lowercaseString)
+  }
 }

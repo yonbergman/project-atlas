@@ -15,8 +15,8 @@ class YBCardTableViewCell: UITableViewCell {
     @IBOutlet weak var cardTypeLabel : UILabel!
     @IBOutlet weak var influenceLabel : UILabel!
     
-    var influenceAttributes:NSDictionary?
-    
+    var influenceAttributes: [String: AnyObject]? = nil
+
     var card:YBNetrunnerCard?{
         didSet {
             self.configureView()
@@ -24,31 +24,23 @@ class YBCardTableViewCell: UITableViewCell {
 
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
     func configureView(){
-        if let card = self.card{
-            titleLabel.text = card.title
-            cardTypeLabel.text = card.subtitle
-            let factionImage = UIImage(named: "\(card.faction).png")
-            self.factionImageView.image = factionImage
-            self.influence = card.influence
-        }
+      if let card = self.card {
+          titleLabel.text = card.title
+          cardTypeLabel.text = card.subtitle
+          let factionImage = UIImage(named: "\(card.faction).png")
+          self.factionImageView.image = factionImage
+          self.influence = card.influence
+      }
     }
     
     var influence:Int = 0{
         didSet{
-            if influenceAttributes == nil{
-                influenceAttributes = self.influenceLabel.attributedText.attributesAtIndex(0, effectiveRange: nil)
-            }
-            let infStr = "•".x(self.influence)
-            self.influenceLabel.attributedText = NSAttributedString(string: infStr, attributes: influenceAttributes)
+          if influenceAttributes == nil {
+            influenceAttributes = self.influenceLabel.attributedText?.attributesAtIndex(0, effectiveRange: nil)
+          }
+          let infStr = String(count: self.influence, repeatedValue: Character("•"))
+          self.influenceLabel.attributedText = NSAttributedString(string: infStr, attributes: influenceAttributes)
         }
     }
     

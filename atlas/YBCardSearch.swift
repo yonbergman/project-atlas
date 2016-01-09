@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Yonatan Bergman. All rights reserved.
 //
 
+import UIKit
+
 enum YBCardSearchMode{
     case CardTitle
     case CardType
     case CardFaction
 }
 
-class YBCardSearch: NSObject {
+class YBCardSearch {
     var searchTokens:[(String, YBCardSearchMode)]
     var searchQuery:String
     let netrunnerDB:YBNetrunnerDB
@@ -42,20 +44,20 @@ class YBCardSearch: NSObject {
     }
     
     func parseQuery(query:String){
-        var trimmedQuery = query.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
+        let trimmedQuery = query.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
         self.searchQuery = trimmedQuery
         
-        self.searchTokens = map(searchQuery.componentsSeparatedByString(" "), { (string) -> (String, YBCardSearchMode) in
+        self.searchTokens = searchQuery.componentsSeparatedByString(" ").map({ (string) -> (String, YBCardSearchMode) in
             var mode:YBCardSearchMode = .CardTitle
             var queryPart = string
             
-            if startsWith(queryPart, "s:") {
+            if queryPart.characters.startsWith("s:".characters) {
                 mode = .CardType
-            } else if startsWith(queryPart, "f:") {
+            } else if queryPart.characters.startsWith("f:".characters) {
                 mode = .CardFaction
             }
             if mode != .CardTitle {
-                queryPart.removeRange(Range(start:queryPart.startIndex, end: advance(queryPart.startIndex, 2)))
+                queryPart.removeRange(Range(start:queryPart.startIndex, end: queryPart.startIndex.advancedBy(2)))
             }
             return (queryPart, mode)
         })

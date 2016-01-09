@@ -7,47 +7,40 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-
-@objc protocol YBNetrunnerSetDelegate {
-    func setSelectionUpdated(set: YBNetrunnerSet)
-}
 
 class YBNetrunnerSet: NSObject {
-    var delegate:YBNetrunnerSetDelegate?
 
-    var data:NSDictionary
-    init(dictionary: NSDictionary){
-        data = dictionary
-        self.selected = true;
-    }
-    
-    var name:String { return data["name"] as String }
-    var code:String { return data["code"] as String }
-    var cycleNumber:UInt { return (data["cyclenumber"] as UInt) }
-    var idx:UInt { return (self.cycleNumber) * 10 + (data["number"] as UInt)  }
-    var cycle:String {
-        return YBNetrunnerSet.cycleName(self.cycleNumber)
-    }
+  init(json: JSON) {
+    name = json["name"].stringValue
+    code = json["code"].stringValue
+    cycleNumber = json["cyclenumber"].uIntValue
+    number = json["number"].uIntValue
 
-    class func cycleName(number:UInt) -> String{
-        switch number{
-            case 2: return "Genesis"
-            case 4: return "Spin"
-            case 6: return "Lunar"
-            case 8: return "SanSan"
-            default: return ""
-        }
-    }
-    var isReal:Bool{
-        return self.cycleNumber > 0
-    }
-    
-    var selected:Bool {
-        didSet {
-            self.delegate?.setSelectionUpdated(self)
-        }
-    }
+  }
+  let name: String
+  let code: String
+  let cycleNumber: UInt
+  let number: UInt
+  lazy var idx: UInt = { self.cycleNumber * 10 + self.number }()
+  lazy var cycle: String = { YBNetrunnerSet.cycleName(self.cycleNumber) }()
 
+  class func cycleName(number: UInt) -> String{
+    switch number {
+    case 2: return "Genesis"
+    case 4: return "Spin"
+    case 6: return "Lunar"
+    case 8: return "SanSan"
+    case 10: return "Mumbad"
+    default: return ""
+    }
+  }
+
+  lazy var isReal: Bool = {
+    return self.cycleNumber > 0
+  }()
+
+  var selected: Bool = true
 
 }

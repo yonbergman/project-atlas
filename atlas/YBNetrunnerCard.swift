@@ -89,5 +89,10 @@ class YBNetrunnerCard {
           return false
       }
   }
+
+  func matchText(query: String?) -> Bool {
+    guard let query = query else { return false }
+    return self.text.containsIgnoreCase(query)
+  }
   
 }

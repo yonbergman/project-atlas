@@ -15,13 +15,28 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>9</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>netrunnerdb.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -44,23 +59,5 @@
 	<array/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSExceptionDomains</key>
-    <dict>
-      <key>netrunnerdb.com</key>
-      <dict>
-        <!--Include to allow subdomains-->
-        <key>NSIncludesSubdomains</key>
-        <true/>
-        <!--Include to allow HTTP requests-->
-        <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-        <true/>
-        <!--Include to specify minimum TLS version-->
-        <key>NSTemporaryExceptionMinimumTLSVersion</key>
-        <string>TLSv1.1</string>
-      </dict>
-    </dict>
-  </dict>
 </dict>
 </plist>

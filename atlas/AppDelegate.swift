@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application.statusBarStyle = .LightContent
     Parse.setApplicationId("EgQHHegfE3B4Bxa77C0RLY1IraE7mZkcqnYPCM62", clientKey: "tB23lnzYum8ds8VkQdeuyeA2lI515Rgx5WBsRY8P")
     PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
+    let URLCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 25 * 1024 * 1024, diskPath: nil)
+    NSURLCache.setSharedURLCache(URLCache)
+
     return true
   }
   

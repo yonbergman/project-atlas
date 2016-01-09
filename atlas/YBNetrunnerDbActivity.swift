@@ -8,6 +8,7 @@
 
 //import Cocoa
 import UIKit
+import Parse
 
 class YBNetrunnerDbActivity: UIActivity {
     
@@ -43,6 +44,7 @@ class YBNetrunnerDbActivity: UIActivity {
     
     override func performActivity() {
         if let card = self.card {
+          PFAnalytics.trackEventInBackground("activity-open-nrdb", block: nil)
             UIApplication.sharedApplication().openURL(NSURL(string: card.url)!)
         }
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 @objc protocol YBSetListDelegate {
     func setListDone()
@@ -70,12 +69,6 @@ class YBSetListViewController: UIViewController, UITableViewDataSource, UITableV
         set.selected = !set.selected
         (tableView.cellForRowAtIndexPath(indexPath) as! YBSetListViewCell).set = set
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        PFAnalytics.trackEventInBackground("selectSet", dimensions: [
-            "set": set.name,
-            "cycle": set.cycle,
-            "didSelect": set.selected ? "true" : "false"
-            ], block: nil)
     }
     
     @IBAction func toggleSelect(sender: AnyObject) {

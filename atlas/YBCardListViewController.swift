@@ -8,7 +8,6 @@
 
 import UIKit
 import IDMPhotoBrowser
-import Parse
 
 class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, YBNetrunnerDelegate, IDMPhotoBrowserDelegate {
 
@@ -92,7 +91,6 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
 
   func displayCardInPhotoBrowser(indexPath: NSIndexPath, forBrowser: IDMPhotoBrowser?){
     if let browser = forBrowser{
-      PFAnalytics.trackEventInBackground("clicked-card", block: nil)
       browser.setInitialPageIndex(UInt(indexPath.row))
       self.presentViewController(browser, animated: true, completion: nil)
     }
@@ -101,11 +99,12 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
   func createPhotoBrowserFromCards(cards:[YBNetrunnerCard]) -> IDMPhotoBrowser{
     let photos:[IDMPhoto] = cards.map { card in
       var photo:IDMPhoto
-      if card.imageSrc != "" {
-        photo = IDMPhoto(URL: card.imageURL)
-      } else {
-        photo = IDMPhoto(image: UIImage(named: "no-image"))
-      }
+      photo = IDMPhoto(URL: card.imageURL)
+//      if card.imageSrc != "" {
+//        photo = IDMPhoto(URL: card.imageURL)
+//      } else {
+//        photo = IDMPhoto(image: UIImage(named: "no-image"))
+//      }
       photo.caption = card.title + "\n" + card.subtitle
 
       return photo
@@ -176,7 +175,6 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
       let dimensions = [
         "query": searchString
       ]
-      PFAnalytics.trackEventInBackground("search", dimensions: dimensions, block: nil)
       self.searchResults = YBCardSearch(netrunnerDB: netrunnerDB).search(searchString)
     }
     return true
@@ -186,14 +184,12 @@ class YBCardListViewController: UITableViewController, UISearchDisplayDelegate, 
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "sets" {
-      PFAnalytics.trackEventInBackground("showSets", block: nil)
       let setVC = (segue.destinationViewController as! YBSetListViewController)
       setVC.netrunnerDB = self.netrunnerDB
     }
   }
 
   @IBAction func unwindToList(segue: UIStoryboardSegue) {
-    PFAnalytics.trackEventInBackground("hideSets", block: nil)
     netrunnerDB.refreshFilters()
     setupPhotoBrowser()
     self.tableView.reloadData()

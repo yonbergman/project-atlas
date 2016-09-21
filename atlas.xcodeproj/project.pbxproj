@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36D6049B208DEB8177BF6915 /* Pods_atlasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942AA4FE3D50383F04FA8E96 /* Pods_atlasTests.framework */; };
 		B071DD341C416A4B00B8CD46 /* IDMPBLocalizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B071DD331C416A4B00B8CD46 /* IDMPBLocalizations.bundle */; };
 		ED036B4119459DCE00FA4D56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4019459DCE00FA4D56 /* Foundation.framework */; };
 		ED036B4319459DD200FA4D56 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED036B4219459DD200FA4D56 /* CFNetwork.framework */; };
@@ -72,6 +73,9 @@
 
 /* Begin PBXFileReference section */
 		23AC522852A5F137FA60F2F6 /* Pods_atlas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_atlas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		287A61CC389A7F6DE13661F4 /* Pods-atlasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-atlasTests/Pods-atlasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6BB6F9A6053D6C4CD533BA9D /* Pods-atlasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-atlasTests/Pods-atlasTests.release.xcconfig"; sourceTree = "<group>"; };
+		942AA4FE3D50383F04FA8E96 /* Pods_atlasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_atlasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B071DD331C416A4B00B8CD46 /* IDMPBLocalizations.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IDMPBLocalizations.bundle; path = Pods/IDMPhotoBrowser/Classes/IDMPBLocalizations.bundle; sourceTree = "<group>"; };
 		C44550C0DBBE7D9EA9F2CAE9 /* Pods-atlas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-atlas/Pods-atlas.debug.xcconfig"; sourceTree = "<group>"; };
 		D40E9FE72EBEC92B2531522E /* Pods-atlas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-atlas.release.xcconfig"; path = "Pods/Target Support Files/Pods-atlas/Pods-atlas.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D6049B208DEB8177BF6915 /* Pods_atlasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +150,8 @@
 			children = (
 				C44550C0DBBE7D9EA9F2CAE9 /* Pods-atlas.debug.xcconfig */,
 				D40E9FE72EBEC92B2531522E /* Pods-atlas.release.xcconfig */,
+				287A61CC389A7F6DE13661F4 /* Pods-atlasTests.debug.xcconfig */,
+				6BB6F9A6053D6C4CD533BA9D /* Pods-atlasTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 				ED036B4019459DCE00FA4D56 /* Foundation.framework */,
 				ED036B3E19459DC900FA4D56 /* CoreFoundation.framework */,
 				23AC522852A5F137FA60F2F6 /* Pods_atlas.framework */,
+				942AA4FE3D50383F04FA8E96 /* Pods_atlasTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,13 +287,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9D8A971941D57E00B19ED3 /* Build configuration list for PBXNativeTarget "atlas" */;
 			buildPhases = (
-				7B8C92543D2F4F70A5FB66FB /* Check Pods Manifest.lock */,
+				7B8C92543D2F4F70A5FB66FB /* [CP] Check Pods Manifest.lock */,
 				ED9D8A751941D57E00B19ED3 /* Sources */,
 				ED9D8A761941D57E00B19ED3 /* Frameworks */,
 				ED9D8A771941D57E00B19ED3 /* Resources */,
 				EDDDCF4A1941F29300F28E58 /* Embed Frameworks */,
-				1C929ECC99584194A7F80478 /* Copy Pods Resources */,
-				A4CC2FAF25EA3FEAEFD0F6E3 /* Embed Pods Frameworks */,
+				1C929ECC99584194A7F80478 /* [CP] Copy Pods Resources */,
+				A4CC2FAF25EA3FEAEFD0F6E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,9 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9D8A9A1941D57E00B19ED3 /* Build configuration list for PBXNativeTarget "atlasTests" */;
 			buildPhases = (
+				BC3ADE8557C173D4E73C545E /* [CP] Check Pods Manifest.lock */,
 				ED9D8A891941D57E00B19ED3 /* Sources */,
 				ED9D8A8A1941D57E00B19ED3 /* Frameworks */,
 				ED9D8A8B1941D57E00B19ED3 /* Resources */,
+				2A07A9C86B9CA31C843806FB /* [CP] Embed Pods Frameworks */,
+				2C002002AE3F84817E4262D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,7 +339,7 @@
 				TargetAttributes = {
 					ED9D8A781941D57E00B19ED3 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = B233M45L7E;
+						DevelopmentTeam = 6S3L8Q26BJ;
 					};
 					ED9D8A8C1941D57E00B19ED3 = {
 						CreatedOnToolsVersion = 6.0;
@@ -394,14 +405,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C929ECC99584194A7F80478 /* Copy Pods Resources */ = {
+		1C929ECC99584194A7F80478 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,14 +420,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlas/Pods-atlas-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B8C92543D2F4F70A5FB66FB /* Check Pods Manifest.lock */ = {
+		2A07A9C86B9CA31C843806FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlasTests/Pods-atlasTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C002002AE3F84817E4262D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlasTests/Pods-atlasTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B8C92543D2F4F70A5FB66FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,19 +465,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A4CC2FAF25EA3FEAEFD0F6E3 /* Embed Pods Frameworks */ = {
+		A4CC2FAF25EA3FEAEFD0F6E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-atlas/Pods-atlas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC3ADE8557C173D4E73C545E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -582,7 +638,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				INFOPLIST_FILE = atlas/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -601,7 +657,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				INFOPLIST_FILE = atlas/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yonbergman.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -612,6 +668,7 @@
 		};
 		ED9D8A9B1941D57E00B19ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 287A61CC389A7F6DE13661F4 /* Pods-atlasTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/atlas.app/atlas";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -633,6 +690,7 @@
 		};
 		ED9D8A9C1941D57E00B19ED3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BB6F9A6053D6C4CD533BA9D /* Pods-atlasTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/atlas.app/atlas";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -63,33 +63,29 @@ class YBNetrunnerDB: NSObject{
   }
 
   func loadSets(){
-    YBAppConfig.getConfig { (config, e) in
-      let setURL = config["sets_url"] as! String
-      Alamofire.request(.GET, setURL).responseJSON { response in
-
-        if response.result.isSuccess {
-          if let data = response.data {
-            let json = JSON(data: data)
-            self.receivedSetJSON(json)
-          }
+    let setURL = YBAppConfig.setsURL()
+    
+    Alamofire.request(.GET, setURL).responseJSON { response in
+      if response.result.isSuccess {
+        if let data = response.data {
+          let json = JSON(data: data)
+          self.receivedSetJSON(json)
         }
       }
     }
-
   }
 
   func loadSettings(){
-    YBAppConfig.getConfig({ (config, error) in
-      let stringURL = config["card_url"] as! String
-      self.baseURL = NSURL(string: stringURL)
-      self.loadCards()
-    })
+    let cardURL = YBAppConfig.cardURL()
+    self.baseURL = NSURL(string: cardURL)
+    self.loadCards()
   }
 
   func receivedJSON(jsonCards: JSON){
     cards.removeAll(keepCapacity: true)
-    for item in jsonCards.arrayValue {
-      let card = YBNetrunnerCard(json: item)
+    let template = jsonCards["imageUrlTemplate"].stringValue
+    for item in jsonCards["data"].arrayValue {
+      let card = YBNetrunnerCard(json: item, imageTemplate: template)
       if card.isReal {
         cards.append(card)
       }
@@ -99,7 +95,8 @@ class YBNetrunnerDB: NSObject{
 
   private func receivedSetJSON(json: JSON) {
     sets.removeAll(keepCapacity: true)
-    for item in json.arrayValue {
+
+    for item in json["data"].arrayValue {
       let set = YBNetrunnerSet(json: item)
       if set.isReal {
         sets.append(set)

@@ -7,18 +7,15 @@
 //
 
 import UIKit
-import Parse
 
 class YBAppConfig: NSObject {
     
-    class func getConfig(callback: (PFConfig!, NSError!) -> ()){
-        PFConfig.getConfigInBackgroundWithBlock { config, error in
-            if error == nil {
-                callback(config, error)
-            } else {
-                callback(PFConfig.currentConfig(), error)
-            }
-        }
+    class func cardURL() -> String {
+      return "https://netrunnerdb.com/api/2.0/public/cards"
+    }
+    
+    class func setsURL() -> String {
+      return "https://netrunnerdb.com/api/2.0/public/packs"
     }
    
 }

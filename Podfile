@@ -6,9 +6,8 @@ target "atlas" do
   pod 'IDMPhotoBrowser', :git => 'https://github.com/yonbergman/IDMPhotoBrowser.git', :branch => '1.8.1.withActivity'
   # pod 'NSString+Ruby', '~> 1.1'
   # pod 'BlocksKit', '~> 2.2'
-  pod 'Parse'
   pod 'Alamofire', '~> 3.0'
-  pod 'SwiftyJSON'
+  pod 'SwiftyJSON', '~> 2.3.1'
 end
 
 
